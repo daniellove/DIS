@@ -18,10 +18,6 @@ var data = {
 	}]
 }
 
-var headers = {
-	Authorization: API_KEY, 'content-type': 'application/json'
-}
-
 var method = 'POST'
 
 var url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/developerMetadata:search`
@@ -30,7 +26,10 @@ function runTest() {
 	$.ajax({
 		type: method,
 		url: url,
-		headers: headers,
+		headers: {
+			Authorization: `Bearer ${API_KEY}`,
+			'content-type': 'application/json'
+		},
 		data: data,
 		success: function(response) {
 			console.log(response)
