@@ -44,6 +44,8 @@
    * https://developers.google.com/explorer-help/code-samples#javascript
    */
 
+console.log('r1')
+
   function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/spreadsheets"})
@@ -51,7 +53,7 @@
               function(err) { console.error("Error signing in", err); });
   }
   function loadClient() {
-    gapi.client.setApiKey("13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM");
+    gapi.client.setApiKey("AIzaSyB6A4LdYKP_r0Y7xMnhpAJ1H4aouVb5g5U");
     return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
