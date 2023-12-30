@@ -39,32 +39,27 @@
 <html>
 <body>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-client_id" content="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com">
-	<div id="g_id_onload"
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID">
+    <div class="g-signin2" data-onsuccess="resfun"></div>
+	<!-- <div id="g_id_onload"
 		data-client_id="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"
 		data-context="signin"
-		data-ux_mode="popup"
-		data-callback="res"
-		data-auto_prompt="false">
-	</div>
+		data-callback="resfun"
+		data-auto_select="true"
+		data-close_on_tap_outside="false"
+		data-itp_support="true">
+	</div> -->
 
-	<div class="g_id_signin"
-		data-type="standard"
-		data-shape="rectangular"
-		data-theme="outline"
-		data-text="signin_with"
-		data-size="large"
-		data-logo_alignment="left">
-	</div>
-
-	<script>
-		console.log('test4')
-
-		const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
-
-		function res(args) {
-			console.log(args)
-		}
-	</script>
 </body>
+
+<script>
+	console.log('test5')
+
+	const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
+
+	function resfun(args) {
+		console.log(args)
+	}
+</script>
+
 </html>
