@@ -38,32 +38,56 @@
 </body>
 </html> -->
 
-<script>
-	console.log('ready3')
-</script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>console.log('ready6')</script>
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <div id="g_id_onload"
      data-client_id="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"
      data-callback="handleCredentialResponse">
 </div>
-<div class="g_id_signin" data-type="standard"></div>
-<script src="https://apis.google.com/js/api.js"></script>
-<button onclick="execute()">execute</button>
-
+<div class="g_id_signin" data-type="standard"></div> -->
+<!-- 
 <script type="text/javascript">
 	var args = null
 	function handleCredentialResponse(data) {
 		args = data
 		console.log('done')
 	}
-</script>
+</script> -->
 
+
+<script src="https://apis.google.com/js/api.js"></script>
 <script>
-	function execute() {
+  /**
+   * Sample JavaScript code for sheets.spreadsheets.values.get
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/code-samples#javascript
+   */
+
+	const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
+	const API_KEY = 'AIzaSyCPEg0TjHYWFV-Lia7NKLSV-zJD2A8sLA4';
+	const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
+	const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+	var RANGE = "Characters!A:BA"
+
+  function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: SCOPE})
+        // .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"})
+        .then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  function loadClient() {
+    gapi.client.setApiKey(API_KEY);
+    return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
     return gapi.client.sheets.spreadsheets.values.get({
-      "spreadsheetId": "AIzaSyCPEg0TjHYWFV-Lia7NKLSV-zJD2A8sLA4",
-      "range": "Characters!A:BA"
+      "spreadsheetId": SHEET_ID,
+      "range": RANGE
     })
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
@@ -71,15 +95,16 @@
               },
               function(err) { console.error("Execute error", err); });
   }
+  gapi.load("client:auth2", function() {
+    gapi.auth2.init({client_id: CLIENT_ID});
+  });
 </script>
+<button onclick="authenticate().then(loadClient)">authorize and load</button>
+<button onclick="execute()">execute</button>
+
+<!-- 
 
 
-<script>
-  /**
-   * Sample JavaScript code for sheets.spreadsheets.values.get
-   * See instructions for running APIs Explorer code samples locally:
-   * https://developers.google.com/explorer-help/code-samples#javascript
-   */
 
 
   function authenticate() {
@@ -95,11 +120,21 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  
+  function execute() {
+    return gapi.client.sheets.spreadsheets.values.get({
+      "spreadsheetId": "13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM",
+      "range": "Characters!A:BA"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
   gapi.load("client:auth2", function() {
     gapi.auth2.init({client_id: "926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"});
   });
 </script>
- <button onclick="authenticate().then(loadClient)">authorize and load</button>
+ <button onclick="authenticate().then(loadClient)">authorize and load</button> -->
 <!--
  -->
