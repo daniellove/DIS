@@ -40,7 +40,7 @@
 </html> -->
 
 <script>
-	console.log('ready4')
+	console.log('ready5')
 </script>
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -49,6 +49,12 @@
      data-callback="handleCredentialResponse">
 </div>
 <div class="g_id_signin" data-type="standard"></div>
+
+<script type="text/javascript">
+	function handleCredentialResponse() {
+		console.log('done')
+	}
+</script>
 <!-- 
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
