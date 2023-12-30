@@ -1,64 +1,51 @@
+/**
+* Sample JavaScript code for sheets.spreadsheets.values.get
+* See instructions for running APIs Explorer code samples locally:
+* https://developers.google.com/explorer-help/code-samples#javascript
+*/
 
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
-const API_KEY = 'AIzaSyB6A4LdYKP_r0Y7xMnhpAJ1H4aouVb5g5U';
-// const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
-// const SCOPE = 'https://www.googleapis.com/auth/streadsheets';
+const API_KEY = 'AIzaSyCPEg0TjHYWFV-Lia7NKLSV-zJD2A8sLA4';
+const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
+const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+// const SCOPE = 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly';
 
+var RANGE = "Characters!A:BA"
 
+function authenticate() {
+	return gapi.auth2.getAuthInstance()
+	.signIn({scope: SCOPE})
+	.then(function() { console.log("Sign-in successful"); },
+		function(err) { console.error("Error signing in", err); });
+}
 
-// var params = {
-// 	spreadsheetId: SHEET_ID,
-// 	range: 'Characters',
-// 	valueInputOption: 'RAW',
-// 	// insertDataOption: 'OVERWRITE',
-// 	insertDataOption: 'INSERT_ROWS',
-// }
+function loadClient() {
+	gapi.client.setApiKey(API_KEY);
+	return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
+	.then(function() { 
+		console.log("GAPI client loaded for API"); 
+		$('#auth').hide()
+		$('#execute').show()
+	},
+	function(err) { console.error("Error loading GAPI client for API", err); });
+}
 
-// var data = {
-// 	"dataFilters": [{
-// 		"a1Range": "Characters!A:A"
-// 	}]
-// }
+ // Make sure the client is loaded and sign-in is complete before calling this method.
+function execute() {
+	return gapi.client.sheets.spreadsheets.values.get({
+		"spreadsheetId": SHEET_ID,
+		"range": RANGE
+	})
+	.then(function(response) {
+        // Handle the results here (response.result has the parsed body).
+		console.log("Response", response);
+	},
+	function(err) { console.error("Execute error", err); });
+}
 
-// var method = 'POST'
+gapi.load("client:auth2", function() {
+	gapi.auth2.init({client_id: CLIENT_ID});
+});
 
-// var url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/developerMetadata:search`
-
-// function runTest() {
-// 	$.ajax({
-// 		type: method,
-// 		url: url,
-// 		headers: {
-// 			Authorization: `Bearer ${API_KEY}`,
-// 			'content-type': 'application/json'
-// 		},
-// 		data: data,
-// 		success: function(response) {
-// 			console.log(response)
-// 			return
-// 		},
-// 		error: function(xhr, options, err) {
-// 			console.log(err)
-// 			return
-// 		},
-
-// 	});
-
-// 	return
-// }
-
-
-
-
-
-
-
-// https://developers.google.com/sheets/api/reference/rest/#rest-resource:-v4.spreadsheets.values
-
-// $.ajax({
-// 	type: 'GET',
-// 	url: 'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}',
-// 	success: function(data) {
-		
-// 	}
-// });
+$('#auth').authenticate().then(loadClient);
+$('#execute').on('click', execute());
