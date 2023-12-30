@@ -22,19 +22,31 @@ var headers = {
 	Authorization: API_KEY, 'content-type': 'application/json'
 }
 
-$.ajax({
-	type: 'POST',
-	url: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/developerMetadata:search`,
-	headers: headers,
-	data: data,
-	success: function(response) {
-		console.log(response)
-	},
-	error: function(xhr, options, err) {
-		console.log(err)
-	},
+var method = 'POST'
 
-});
+var url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/developerMetadata:search`
+
+function runTest() {
+	$.ajax({
+		type: method,
+		url: url,
+		headers: headers,
+		data: data,
+		success: function(response) {
+			console.log(response)
+			return
+		},
+		error: function(xhr, options, err) {
+			console.log(err)
+			return
+		},
+
+	});
+
+	return
+}
+
+
 
 
 
