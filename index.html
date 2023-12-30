@@ -50,14 +50,10 @@
 <div class="g_id_signin" data-type="standard"></div>
 
 <script type="text/javascript">
-	function handleCredentialResponse(args1, args2, args3, args4, args5) {
+	var args = null
+	function handleCredentialResponse(data) {
+		args = data
 		console.log('done')
-		console.log(args1)
-		console.log(args2)
-		console.log(args3)
-		console.log(args4)
-		console.log(args5)
-		auth = args['credential']
 	}
 </script>
 
