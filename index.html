@@ -6,7 +6,6 @@
 	<title>DIS</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="https://kit.fontawesome.com/12ee01b4dd.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="scripts.js" type="text/javascript"></script>
 </head>
 <body>
@@ -40,9 +39,9 @@
 </html> -->
 
 <script>
-	console.log('ready5')
+	console.log('ready7')
 </script>
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <div id="g_id_onload"
      data-client_id="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"
@@ -51,9 +50,38 @@
 <div class="g_id_signin" data-type="standard"></div>
 
 <script type="text/javascript">
-	function handleCredentialResponse() {
+	function handleCredentialResponse(args) {
 		console.log('done')
+		console.log(args)
 	}
+</script>
+
+<script>
+	
+	const auth = 'Bearer AIzaSyCPEg0TjHYWFV-Lia7NKLSV-zJD2A8sLA4' // Please set your access token.
+	const spreadsheetId = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM' // Please set your spreadsheet ID.
+		function doThething() {
+
+			$.ajax({
+			  type: 'POST',
+			  headers: { Authorization: auth, 'content-type': 'application/json' },
+			  data: JSON.stringify({
+			    "data": [
+			      {
+			        "range": "Characters!A5",
+			        "values": [["abc"]]
+			      },
+			    ],
+			    "valueInputOption": "RAW"
+			  }),
+			  url: 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values:batchUpdate',
+			  success: function (r) {
+			    console.log(r)
+			  }, error: function (r) {
+			    console.log(r)
+			  }
+			})
+		}
 </script>
 <!-- 
 <script src="https://apis.google.com/js/api.js"></script>
