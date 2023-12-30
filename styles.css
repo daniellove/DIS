@@ -1,0 +1,41 @@
+#svgContainer {
+	position: fixed;
+	height: 200px;
+	width: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+svg {
+	max-height: 100%;
+/*	max-width: 50%;*/
+	max-width: 47.5%;
+	position: absolute;
+}
+
+
+#svg1 {
+/*	fill: red; */
+	fill: #ff3721; 
+}
+
+#svg2 {
+/*	fill: blue;*/
+	fill: #6c8cde;
+	transform: rotate(120deg);
+	top: 0;
+/*	left: 50%;*/
+	right: 0;
+}
+
+#svg3 {
+/*	fill: green;*/
+	fill: #3aac72;
+	transform: rotate(240deg);
+/*	left: 25%;*/
+	left: 26.3%;
+/*	bottom: -29.5%;*/
+/*	bottom: -12.5%;*/
+	bottom: -28%;
+}
