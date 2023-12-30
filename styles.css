@@ -40,6 +40,7 @@ svg {
 	bottom: -28%;
 }
 
-#execute {
+#execute,
+#execute2 {
 	display: none;
 }

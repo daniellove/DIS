@@ -1,4 +1,4 @@
-console.log('ready1')
+console.log('ready2')
 
 /**
 * Sample JavaScript code for sheets.spreadsheets.values.get
@@ -28,6 +28,7 @@ function loadClient() {
 		console.log("GAPI client loaded for API"); 
 		$('#auth').hide()
 		$('#execute').show()
+		$('#execute2').show()
 	},
 	function(err) { console.error("Error loading GAPI client for API", err); });
 }
@@ -45,6 +46,27 @@ function execute() {
 	function(err) { console.error("Execute error", err); });
 }
 
+function execute2() {
+    return gapi.client.sheets.spreadsheets.values.update({
+      "spreadsheetId": "13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM",
+      "range": "Characters!R6C1",
+      "responseValueRenderOption": "UNFORMATTED_VALUE",
+      "valueInputOption": "RAW",
+      "resource": {
+        "values": [
+          [
+            "TEST"
+          ]
+        ]
+      }
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+
 gapi.load("client:auth2", function() {
 	gapi.auth2.init({client_id: CLIENT_ID});
 });
@@ -55,4 +77,5 @@ $(function() {
 		return
 	});
 	$('#execute').on('click', execute);
+	$('#execute2').on('click', execute2);
 })
