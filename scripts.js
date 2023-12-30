@@ -13,10 +13,6 @@ const API_KEY = 'AIzaSyB6A4LdYKP_r0Y7xMnhpAJ1H4aouVb5g5U';
 // }
 
 var data = {
-
-}
-
-var params = {
 	"dataFilters": [{
 		"a1Range": "Characters!A:A"
 	}]
@@ -30,7 +26,7 @@ $.ajax({
 	type: 'POST',
 	url: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/developerMetadata:search`,
 	headers: headers,
-	data: params,
+	data: data,
 	success: function(response) {
 		console.log(response)
 	},
