@@ -47,7 +47,10 @@ gapi.load("client:auth2", function() {
 	gapi.auth2.init({client_id: CLIENT_ID});
 });
 
-$('#auth').on('click', function() {
-	authenticate().then(loadClient)
-});
-$('#execute').on('click', execute);
+$(function() {	
+	$('#auth').on('click', function() {
+		authenticate().then(loadClient);
+		return
+	});
+	$('#execute').on('click', execute);
+})
