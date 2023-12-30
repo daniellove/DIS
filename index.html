@@ -39,7 +39,7 @@
 </html> -->
 
 <script>
-	console.log('ready1')
+	console.log('ready2')
 </script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -72,7 +72,7 @@
               function(err) { console.error("Execute error", err); });
   }
 </script>
-<!-- 
+
 
 <script>
   /**
@@ -82,24 +82,24 @@
    */
 
 
-  // function authenticate() {
-  //   return gapi.auth2.getAuthInstance()
-  //       .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"})
-  //       .then(function() { console.log("Sign-in successful"); },
-  //             function(err) { console.error("Error signing in", err); });
-  // }
-  // function loadClient() {
-  //   gapi.client.setApiKey("YOUR_API_KEY");
-  //   return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
-  //       .then(function() { console.log("GAPI client loaded for API"); },
-  //             function(err) { console.error("Error loading GAPI client for API", err); });
-  // }
+  function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"})
+        .then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  function loadClient() {
+    gapi.client.setApiKey("YOUR_API_KEY");
+    return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   
   gapi.load("client:auth2", function() {
     gapi.auth2.init({client_id: "926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"});
   });
 </script>
- <button onclick="authenticate().then(loadClient)">authorize and load</button> -->
+ <button onclick="authenticate().then(loadClient)">authorize and load</button>
 <!--
  -->
