@@ -62,7 +62,7 @@
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     return gapi.client.sheets.spreadsheets.values.get({
-      "spreadsheetId": "13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM",
+      "spreadsheetId": "AIzaSyCPEg0TjHYWFV-Lia7NKLSV-zJD2A8sLA4",
       "range": "Characters!A:BA"
     })
         .then(function(response) {
@@ -72,7 +72,7 @@
               function(err) { console.error("Execute error", err); });
   }
   gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: "YOUR_CLIENT_ID"});
+    gapi.auth2.init({client_id: "926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"});
   });
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
