@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -32,5 +32,23 @@
 	<button id="auth">authorize and load</button>
 	<button id="execute">execute</button>
 
+</body>
+</html>
+ -->
+
+<html>
+<body>
+	<script type="text/javascript">
+		console.log('test1')
+
+		const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
+		
+		function res(args) {
+			console.log(args)
+		}
+	</script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com">
+	<div class="g-signin2" data-onsuccess="res"></div>
 </body>
 </html>
