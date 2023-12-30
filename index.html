@@ -38,17 +38,24 @@
 
 <html>
 <body>
-	<script type="text/javascript">
-		console.log('test1')
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com">
+	<div id="g_id_onload"
+		data-client_id="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"
+		data-context="signin"
+		data-callback="res"
+		data-auto_select="true"
+		data-itp_support="true">
+	</div>
+
+	<script>
+		console.log('test2')
 
 		const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
-		
+
 		function res(args) {
 			console.log(args)
 		}
 	</script>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-client_id" content="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com">
-	<div class="g-signin2" data-onsuccess="res"></div>
 </body>
 </html>
