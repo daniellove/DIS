@@ -1,4 +1,4 @@
-console.log(7)
+console.log(8)
 
 // class Request {
 // 	constructor(method, endpoint, callback) {
@@ -32,7 +32,9 @@ const HEADERS = {
 }
 var SHEET_HEADERS = [];
 var SHEET_ROWS = [];
-var START_ROW = 2;
+var DATA_ROW = 2;
+
+const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
 function populateRows() {
 
@@ -54,33 +56,34 @@ function getRow(row) {
 
 	fetch(url)
 		.then(r => r.json())
-		.then(function(result) {
-			if (SHEET_HEADERS.length == 0) {
-				for (var column in result) {
-					if (column != 'rowIndex') SHEET_HEADERS.push(column);
-				};
-				console.log(SHEET_HEADERS);
-			};
-
-			if (typeof result['character_id'] != 'undefined') {
-				SHEET_ROWS.push(result);
-				getRow(row + 1);
-			} else {
-				console.log(SHEET_ROWS);
-			};
-
-			return
-		});
+		.then(result => processRows(result));
 
 	return
 };
 
+function processRows(result) {
+	if (SHEET_HEADERS.length == 0) {
+		for (var column in result) {
+			if (column != 'rowIndex') SHEET_HEADERS.push(column);
+		};
+		console.log(SHEET_HEADERS);
+	};
 
+	if (typeof result['character_id'] != 'undefined') {
+		SHEET_ROWS.push(result);
+		DATA_ROW++
+		getRow(DATA_ROW);
+	} else {
+		console.log(SHEET_ROWS);
+	};
+
+	return
+}
 
 function postRow(data) {
 	var row = {};
-	for (var i in sheetHeaders) {
-		var header = sheetHeaders[i];
+	for (var i in SHEET_ROWS) {
+		var header = SHEET_ROWS[i];
 		var content = data[i];
 		row[header] = content;
 	};
@@ -88,7 +91,7 @@ function postRow(data) {
 	fetch(HOST_URL, {
 		method: 'POST',
 		headers: HEADERS,
-		body: JSON.stringify({name: 'San Francisco', state: 'CA', country: 'USA', population: 860000})
+		body: JSON.stringify(data)
 	})
 		.then(r => r.json())
 		.then(result => console.log(result));
