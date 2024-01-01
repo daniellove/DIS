@@ -1,4 +1,4 @@
-console.log(2)
+console.log(3)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -38,6 +38,8 @@ function getRows() {
 }
 
 function processRows(data) {
+	console.log(data)
+
 	SHEET_ROWS = SHEET_ROWS.concat(data['results']);
 	if (SHEET_HEADERS.length == 0) {
 		for (var column in SHEET_ROWS[0]) {
@@ -71,7 +73,6 @@ function postRow(data) {
 		url: HOST_URL,
 		data: JSON.stringify(row),
 		success: function(response) {
-			console.log('Successfully added row:')
 			console.log(response)
 		}
 	});

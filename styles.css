@@ -1,3 +1,13 @@
+:root {
+	--red: #ff3721;
+	--blue: #6c8cde;
+	--green: #3aac72;
+}
+
+html {
+	font-size: 18px;
+}
+
 #svgContainer {
 	position: fixed;
 	height: 200px;
@@ -17,12 +27,12 @@ svg {
 
 #svg1 {
 /*	fill: red; */
-	fill: #ff3721; 
+	fill: var(--red); 
 }
 
 #svg2 {
 /*	fill: blue;*/
-	fill: #6c8cde;
+	fill: var(--blue); 
 	transform: rotate(120deg);
 	top: 0;
 /*	left: 50%;*/
@@ -31,7 +41,7 @@ svg {
 
 #svg3 {
 /*	fill: green;*/
-	fill: #3aac72;
+	fill: var(--green); 
 	transform: rotate(240deg);
 /*	left: 25%;*/
 	left: 26.3%;
@@ -40,7 +50,10 @@ svg {
 	bottom: -28%;
 }
 
-#execute,
-#execute2 {
-	display: none;
+textarea {
+	height: 2rem;
+	font-size: 1rem;
+	line-height: 2rem;
+	padding: 0 1.5rem;
+	border-radius: 4px;
 }
