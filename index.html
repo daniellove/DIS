@@ -43,26 +43,22 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-	
+
 </head>
 <body>
 	<!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
 </body>
 
 <script type="text/javascript">
-	console.log(3)
+	console.log(4)
 
 	// const fetch = require('isomorphic-fetch');
 	const apiKey ='YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 	const spreadsheetId = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
 
-	fetch('https://api.sheetson.com/v2/sheets/FAQ', {
-        
-      }).then(r => r.json())
-
 	$.ajax({
 		type: 'GET',
-		url: 'https://api.sheetson.com/v2/sheets/Characters/1',
+		url: 'https://api.sheetson.com/v2/sheets/Characters',
 		withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
