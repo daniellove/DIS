@@ -8,6 +8,10 @@ html {
 	font-size: 18px;
 }
 
+body, body * {
+	box-sizing: border-box;
+}
+
 #svgContainer {
 	position: fixed;
 	height: 200px;
@@ -15,6 +19,7 @@ html {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	z-index: 1;
 }
 
 svg {
@@ -50,15 +55,42 @@ svg {
 	bottom: -28%;
 }
 
+#character_fields {
+	position: relative;
+	z-index: 2;
+	padding: 1rem;
+}
+
 .character_field {
 	position: relative;
+	width: 400px;
+	max-width: 100%;
+	margin-bottom: 1rem;
 }
 
 input {
 	height: 2rem;
 	font-size: 1rem;
 	line-height: 2rem;
-	padding: 0 1.5rem;
+	padding: 0 2rem 0 1rem;
 	border-radius: 4px;
 }
 
+input[options] {
+	cursor: pointer;
+}
+
+.character_field input {
+	border-radius: 4px 4px 0 0;
+}
+
+.character_field i {
+	position: absolute;
+	font-size: 1rem;
+	line-height: 2rem;
+	text-align: center;
+	width: 2rem;
+	top: 0;
+	right: 0;
+	z-index: 100;
+}
