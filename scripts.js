@@ -1,4 +1,4 @@
-console.log(8)
+console.log(9)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -8,8 +8,9 @@ const HEADERS = {
     'X-Spreadsheet-Id': SHEET_ID,
     'Content-Type': 'application/json'
 }
-const ROW_COUNT = 2;
+const ROW_COUNT = 100;
 
+var CURRENT_CHARACTER = 4;
 var SHEET_HEADERS = [];
 var SHEET_ROWS = [];
 var ROW_SKIPS = 0 
@@ -24,8 +25,7 @@ function getRows() {
 		'apiKey': API_KEY,
 		'spreadsheetId': SHEET_ID,
 		'limit': ROW_COUNT.toString(),
-		'skip': ROW_SKIPS.toString(),
-		'no-cache': 'true'
+		'skip': ROW_SKIPS.toString()
 	};
 
 	Object.keys(params).forEach(
@@ -34,7 +34,7 @@ function getRows() {
 		)
 	);
 
-	fetch(url)
+	fetch(url, {'no-cache': true})
 		.then(r => r.json())
 		.then(data => processRows(data));
 
