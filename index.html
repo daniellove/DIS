@@ -50,7 +50,7 @@
 </body>
 
 <script type="text/javascript">
-	console.log(7)
+	console.log(8)
 
 	class Request {
 	  constructor(method, endpoint, callback) {
@@ -75,7 +75,7 @@
 	}
 
 
-	var rq = new Request('GET', 'Characters', doTheThing)
+	var rq = new Request('GET', 'Characters/2', doTheThing)
 	$.ajax(rq);
 
 	function doTheThing(data) {
