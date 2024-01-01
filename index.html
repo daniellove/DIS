@@ -51,23 +51,26 @@
     <!-- <div id="g_id_onload"
          data-client_id="926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com"
          data-callback="resfun">
-    </div>
-    <div class="g_id_signin" data-type="standard"></div> -->
+    </div> -->
+    <div class="g_id_signin"></div>
 
 </body>
 
 <script>
-	console.log('test9')
+	console.log('test1')
 
 	const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
 
-window.onload = function () {
-	google.accounts.id.initialize({
-		client_id: CLIENT_ID,
-		callback: resfun
-	});
-	google.accounts.id.prompt();
-};
+
+$(function() {
+	$('#g_id_signin').on('click', function () {
+		google.accounts.id.initialize({
+			client_id: CLIENT_ID,
+			callback: resfun
+		});
+		google.accounts.id.prompt();
+	})
+})
 
 	function resfun(args) {
 		console.log(args)
