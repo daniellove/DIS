@@ -1,4 +1,4 @@
-console.log(0)
+console.log(1)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -8,18 +8,24 @@ const HEADERS = {
     'X-Spreadsheet-Id': SHEET_ID,
     'Content-Type': 'application/json'
 }
+const ROW_COUNT = 2;
+
 var SHEET_HEADERS = [];
 var SHEET_ROWS = [];
+var ROW_SKIPS = 0 
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
 function getRows() {
 
+	if (typeof skip == 'undefined') skip = 0
+
 	var url = new URL(HOST_URL);
 	var params = {
 		apiKey: API_KEY,
 		spreadsheetId: SHEET_ID,
-		limit: '2'
+		limit: ROW_COUNT.toString(),
+		skip: ROW_SKIPS.toString()
 	};
 
 	Object.keys(params).forEach(
@@ -30,17 +36,27 @@ function getRows() {
 
 	fetch(url)
 		.then(r => r.json())
-		.then(results => processRows(results));
+		.then(data => processRows(data));
 
 	return
 
-	function processRows(results) {
-		SHEET_ROWS = results['results'];
-		for (var column in SHEET_ROWS[0]) {
-			if (column != 'rowIndex') SHEET_HEADERS.push(column);
+	function processRows(data) {
+		SHEET_ROWS = SHEET_ROWS.concat(data['results']);
+		if (SHEET_HEADERS.length == 0) {
+			for (var column in SHEET_ROWS[0]) {
+				if (column != 'rowIndex') SHEET_HEADERS.push(column);
+			};
 		};
+
+		console.log(data)
 		console.log(SHEET_HEADERS);
-		console.log(SHEET_ROWS);
+
+		if (data['hasNextPage']) {
+			var ROW_SKIPS = ROW_SKIPS + ROW_COUNT
+			getRows()
+		} else {
+			console.log(SHEET_ROWS);
+		}
 
 		return
 	};
