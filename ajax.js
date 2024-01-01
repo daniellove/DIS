@@ -51,7 +51,7 @@ function processCharacters(url, skips, data) {
 	};
 
 	var nextBatch = moreData(data, skips)
-	if (nextBatch) getData(url, skips, processCharacters);
+	if (nextBatch) getData(url, nextBatch, processCharacters);
 	else console.log(CHAR_ROWS);
 
 	return
@@ -63,7 +63,7 @@ function processLevels(url, skips, data) {
 	LEVEL_ROWS = LEVEL_ROWS.concat(data['results']);
 
 	var nextBatch = moreData(data, skips)
-	if (nextBatch) getData(url, skips, processLevels);
+	if (nextBatch) getData(url, nextBatch, processLevels);
 	else console.log(LEVEL_ROWS);
 }
 
