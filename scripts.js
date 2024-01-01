@@ -1,4 +1,4 @@
-console.log(1)
+console.log(2)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -16,6 +16,7 @@ var SHEET_ROWS = [];
 var ROW_SKIPS = 0 
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+const TEST_UPDATE = {'character_name', 'New Name'}
 
 $.ajaxSetup({headers: HEADERS})
 getRows()
@@ -71,6 +72,21 @@ function postRow(data) {
 		data: JSON.stringify(row),
 		success: function(response) {
 			console.log('Successfully added row:')
+			console.log(response)
+		}
+	});
+
+	return
+}
+
+function updateCell(data) {
+
+	$.ajax({
+		type: 'PUT',
+		url: HOST_URL + '/' + CURRENT_CHARACTER,
+		data: JSON.stringify(data),
+		success: function(response) {
+			console.log('Successfully updated cell:')
 			console.log(response)
 		}
 	});
