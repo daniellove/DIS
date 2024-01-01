@@ -1,4 +1,4 @@
-console.log(0)
+console.log(1)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -8,7 +8,7 @@ const HEADERS = {
     'X-Spreadsheet-Id': SHEET_ID,
     'Content-Type': 'application/json'
 }
-const ROW_COUNT = 100;
+const ROW_COUNT = 24;
 
 var CURRENT_CHARACTER = 4;
 var SHEET_HEADERS = [];
@@ -18,6 +18,7 @@ var ROW_SKIPS = 0
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
 $.ajaxSetup({headers: HEADERS})
+getRows()
 function getRows() {
 	$.ajax({
 		type: 'GET',
@@ -31,6 +32,8 @@ function getRows() {
 		},
 		success: (data => processRows(data))
 	});
+
+	return
 }
 
 function processRows(data) {
@@ -41,47 +44,17 @@ function processRows(data) {
 		};
 	};
 
-	console.log(data)
-	console.log(SHEET_HEADERS);
-
 	if (data['hasNextPage']) {
 		if (!ROW_SKIPS) ROW_SKIPS = 1
 		ROW_SKIPS = ROW_SKIPS + ROW_COUNT
 		getRows()
 	} else {
+		console.log('Data loaded:');
 		console.log(SHEET_ROWS);
 	}
 
 	return
 };
-
-
-
-
-// function getRows() {
-
-// 	var url = new URL(HOST_URL);
-// 	var params = {
-// 		'apiKey': API_KEY,
-// 		'spreadsheetId': SHEET_ID,
-// 		'limit': ROW_COUNT.toString(),
-// 		'skip': ROW_SKIPS.toString()
-// 	};
-
-// 	Object.keys(params).forEach(
-// 		key => url.searchParams.append(
-// 			key, encodeURIComponent(params[key])
-// 		)
-// 	);
-
-// 	fetch(url, {'no-cache': true})
-// 		.then(r => r.json())
-// 		.then(data => processRows(data));
-
-// 	return
-
-	
-// };
 
 
 function postRow(data) {
@@ -92,15 +65,15 @@ function postRow(data) {
 		row[header] = content;
 	};
 
-	console.log(row)
-
-	fetch(HOST_URL, {
-		method: 'POST',
-		headers: HEADERS,
-		body: JSON.stringify(row)
-	})
-		.then(r => r.json())
-		.then(result => console.log(result));
+	$.ajax({
+		type: 'POST',
+		url: HOST_URL,
+		data: JSON.stringify(row),
+		success: function(response) {
+			console.log('Successfully added row:')
+			console.log(response)
+		}
+	});
 
 	return
 }
