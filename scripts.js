@@ -1,4 +1,4 @@
-console.log(3)
+console.log(4)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -23,8 +23,8 @@ function getRows() {
 	var params = {
 		apiKey: API_KEY,
 		spreadsheetId: SHEET_ID,
-		limit: ROW_COUNT.toString(),
-		skip: ROW_SKIPS.toString()
+		limit: '100',
+		skip: '0'
 	};
 
 	Object.keys(params).forEach(
