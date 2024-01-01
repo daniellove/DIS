@@ -16,7 +16,7 @@ var SHEET_ROWS = [];
 var ROW_SKIPS = 0 
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
-const TEST_UPDATE = {'character_name', 'New Name'}
+const TEST_UPDATE = {'character_name': 'New Name'}
 
 $.ajaxSetup({headers: HEADERS})
 getRows()
