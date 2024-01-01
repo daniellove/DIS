@@ -64,7 +64,7 @@ function getRow(row) {
 
 			if (typeof result['character_id'] != 'undefined') {
 				SHEET_ROWS.push(result);
-				getRow(row++);
+				getRow(row + 1);
 			} else {
 				console.log(SHEET_ROWS);
 			};
