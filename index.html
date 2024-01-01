@@ -50,34 +50,38 @@
 </body>
 
 <script type="text/javascript">
-	console.log(6)
+	console.log(7)
 
-	const apiKey ='YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
-	const spreadsheetId = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
-
-	var request = {};
-		request['type'] = 'GET';
-		request['url'] = 'https://api.sheetson.com/v2/sheets/Characters';
-		request['withCredentials'] = true;
-		request['headers'] = {
+	class Request {
+	  constructor(method, endpoint, callback) {
+	    this.type = method;
+	    this.url = `https://api.sheetson.com/v2/sheets/${endpoint}`;
+        this.withCredentials = true;
+        this.headers = {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + apiKey,
-          'X-Sheetson-Spreadsheet-Id': spreadsheetId
+          'Authorization': 'Bearer YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU',
+          'X-Sheetson-Spreadsheet-Id': '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM'
         };
-        request['success'] = function(data) {
-			console.log(data)
-		};
-        request['error'] = function(a, b, c) {
+        this.success = function(data) {
+        	callback(data);
+        };
+        this.error = function(a, b, c) {
+        	console.log('ERROR')
 			console.log(a)
 			console.log(b)
 			console.log(c)
-		};
+        };
+	  }
+	}
 
-	$.ajax(request);
-	// const url = new URL("https://api.sheetson.com/v2/sheets/Characters/1");
-	// Object.keys(params).forEach(key => url.searchParams.append(key, encodeURIComponent(params[key])));
-	// fetch(url).then(r => r.json())
-  // .then(result => console.log(result))
+
+	var rq = new Request('GET', 'Characters', doTheThing)
+	$.ajax(rq);
+
+	function doTheThing(data) {
+		console.log(data)
+	}
+
 
 </script>
 
