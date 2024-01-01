@@ -1,4 +1,4 @@
-console.log(5)
+console.log(6)
 
 // class Request {
 // 	constructor(method, endpoint, callback) {
@@ -64,8 +64,7 @@ function getRow(row) {
 
 			if (typeof result['character_id'] != 'undefined') {
 				SHEET_ROWS.push(result);
-				var NEXT_ROW = row++;
-				getRow(row);
+				getRow(row++);
 			} else {
 				console.log(SHEET_ROWS);
 			};
