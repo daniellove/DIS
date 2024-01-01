@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="https://kit.fontawesome.com/12ee01b4dd.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="ajax.js"></script>
 	<script src="scripts.js"></script>
 </head>
 <body>
@@ -19,13 +20,30 @@
 		<span>Select Character</span>
 	</div>
 	<div id="character_fields">
-		<textarea id="character_name"></textarea>
-		<textarea id="race_1" class="dropdown race" disabled></textarea>
-		<textarea id="race_2" class="dropdown race" disabled></textarea>
-		<textarea id="character_level"></textarea>
-		<textarea id="a_type" class="dropdown weight" disabled></textarea>
-		<textarea id="w_type" class="dropdown weight" disabled></textarea>
-		<i class="fa-solid fa-chevron-down"></i>
+		<div class="character_field">
+			<input id="character_name" class="typing" type="text" placeholder="My character" />
+			<i class="fa-solid fa-pen-to-square"></i>
+		</div>
+		<div class="character_field">
+			<input id="race_1" class="dropdown" for="race" readonly />
+			<i class="fa-solid fa-chevron-down"></i>
+		</div>
+		<div class="character_field">
+			<input id="race_2" class="dropdown" for="race" readonly />
+			<i class="fa-solid fa-chevron-down"></i>
+		</div>
+		<div class="character_field">
+			<input id="character_level" class="typing" type="number" min="0" />
+			<i class="fa-solid fa-pen-to-square"></i>
+		</div>
+		<div class="character_field">
+			<input id="a_type" class="dropdown" for="class" readonly />
+			<i class="fa-solid fa-chevron-down"></i>
+		</div>
+		<div class="character_field">
+			<input id="w_type" class="dropdown" for="class" readonly />
+			<i class="fa-solid fa-chevron-down"></i>
+		</div>
 	</div>
 	<div id="svgContainer">
 		<svg id="svg1" data-name="svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 250">
