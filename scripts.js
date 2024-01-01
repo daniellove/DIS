@@ -1,4 +1,4 @@
-console.log(3)
+console.log(4)
 
 // class Request {
 // 	constructor(method, endpoint, callback) {
