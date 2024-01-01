@@ -42,7 +42,7 @@
 </body>
 
 <script>
-	console.log('test4')
+	console.log('test5')
 
 	const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
 
@@ -53,6 +53,7 @@
 		});
 		google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+      	console.log('broken')
         // continue with another identity provider.
       }
     });
