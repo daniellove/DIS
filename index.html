@@ -48,14 +48,14 @@
 </body>
 
 <script type="text/javascript">
-	console.log(1)
+	console.log(2)
 
 	// const fetch = require('isomorphic-fetch');
 	const params = {
 	  apiKey: 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU',
 	  spreadsheetId: '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM'
 	}
-	const url = = new URL("https://api.sheetson.com/v2/sheets/Characters");
+	const url = new URL("https://api.sheetson.com/v2/sheets/Characters");
 	Object.keys(params).forEach(key => url.searchParams.append(key, encodeURIComponent(params[key])));
 	fetch(url).then(r => r.json())
   .then(result => console.log(result))
