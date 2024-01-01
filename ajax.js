@@ -1,5 +1,3 @@
-console.log(3)
-
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
 const HOST_URL = 'https://api.sheetson.com/v2/sheets/Characters';
