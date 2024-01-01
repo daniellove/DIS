@@ -65,24 +65,3 @@ function postRow(data) {
 
 	return
 }
-
-
-
- 
-
-
-
-// function getTheThing() {
-	// var rq = new Request('GET', 'Characters/2', doTheThing);
-	// console.log(rq);
-	// $.ajax(rq);
-// }
-
-function postTheThing() {
-
-}
-
-function doTheThing(data) {
-	console.log(data)
-}
-
