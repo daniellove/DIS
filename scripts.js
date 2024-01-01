@@ -1,4 +1,4 @@
-console.log(7)
+console.log(8)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -25,7 +25,7 @@ function getRows() {
 		'spreadsheetId': SHEET_ID,
 		'limit': ROW_COUNT.toString(),
 		'skip': ROW_SKIPS.toString(),
-		'no-cache': true
+		'no-cache': 'true'
 	};
 
 	Object.keys(params).forEach(
