@@ -57,7 +57,7 @@ function getRow(row) {
 		.then(function(result) {
 			if (SHEET_HEADERS.length == 0) {
 				for (var column in result) {
-					if {column != 'rowIndex'} SHEET_HEADERS.push(column);
+					if (column != 'rowIndex') SHEET_HEADERS.push(column);
 				};
 				console.log(SHEET_HEADERS);
 			};
