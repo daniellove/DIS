@@ -1,4 +1,4 @@
-console.log(1)
+console.log(2)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -15,10 +15,9 @@ var SHEET_ROWS = [];
 var ROW_SKIPS = 0 
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+const TEST_DATA2 = ["444", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
 function getRows() {
-
-	if (typeof skip == 'undefined') skip = 0
 
 	var url = new URL(HOST_URL);
 	var params = {
@@ -52,7 +51,8 @@ function getRows() {
 		console.log(SHEET_HEADERS);
 
 		if (data['hasNextPage']) {
-			var ROW_SKIPS = ROW_SKIPS + ROW_COUNT
+			if (!ROW_SKIPS) ROW_SKIPS = 1
+			ROW_SKIPS = ROW_SKIPS + ROW_COUNT
 			getRows()
 		} else {
 			console.log(SHEET_ROWS);
