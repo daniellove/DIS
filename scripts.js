@@ -1,26 +1,4 @@
-console.log(9)
-
-// class Request {
-// 	constructor(method, endpoint, callback) {
-// 		this.type = method;
-// 		this.url = `https://api.sheetson.com/v2/sheets/${endpoint}`;
-// 		this.withCredentials = true;
-// 		this.headers = {
-// 			'Content-Type': 'application/json',
-// 			'Authorization': 'Bearer YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU',
-// 			'X-Sheetson-Spreadsheet-Id': '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM'
-// 		};
-// 		this.success = function(data) {
-// 			callback(data);
-// 		};
-// 		this.error = function(a, b, c) {
-// 			console.log('ERROR');
-// 			console.log(a);
-// 			console.log(b);
-// 			console.log(c);
-// 		};
-// 	};
-// };
+console.log(0)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -41,7 +19,7 @@ function getRows() {
 	var params = {
 		apiKey: API_KEY,
 		spreadsheetId: SHEET_ID,
-		limit: '100'
+		limit: '2'
 	};
 
 	Object.keys(params).forEach(
@@ -57,10 +35,10 @@ function getRows() {
 	return
 
 	function processRows(results) {
-		for (var column in results[0]) {
+		SHEET_ROWS = results['results'];
+		for (var column in SHEET_ROWS[0]) {
 			if (column != 'rowIndex') SHEET_HEADERS.push(column);
 		};
-		SHEET_ROWS = results;
 		console.log(SHEET_HEADERS);
 		console.log(SHEET_ROWS);
 
