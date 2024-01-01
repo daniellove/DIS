@@ -79,3 +79,8 @@ $(function() {
 	$('#execute').on('click', execute);
 	$('#execute2').on('click', execute2);
 })
+
+// const auth = new google.auth.GoogleAuth({
+//   keyFile: '/path/to/your-secret-key.json',
+//   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+// });
