@@ -1,18 +1,4 @@
-console.log(1)
-
-function getTheThing() {
-	var rq = new Request('GET', 'Characters/2', doTheThing);
-	console.log(rq);
-	$.ajax(rq);
-}
-
-function postTheThing() {
-
-}
-
-function doTheThing(data) {
-	console.log(data)
-}
+console.log(2)
 
 class Request {
 	constructor(method, endpoint, callback) {
@@ -35,3 +21,18 @@ class Request {
 		};
 	};
 };
+
+function getTheThing() {
+	var rq = new Request('GET', 'Characters/2', doTheThing);
+	console.log(rq);
+	$.ajax(rq);
+}
+
+function postTheThing() {
+
+}
+
+function doTheThing(data) {
+	console.log(data)
+}
+
