@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -33,80 +33,4 @@
 	<button id="execute">execute</button>
 
 </body>
-</html>
- -->
-
-<html>
-
-<head>
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.0/tailwind.min.css"/>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-</head>
-<body>
-	<!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
-</body>
-
-<script type="text/javascript">
-	console.log(8)
-
-	class Request {
-	  constructor(method, endpoint, callback) {
-	    this.type = method;
-	    this.url = `https://api.sheetson.com/v2/sheets/${endpoint}`;
-        this.withCredentials = true;
-        this.headers = {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU',
-          'X-Sheetson-Spreadsheet-Id': '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM'
-        };
-        this.success = function(data) {
-        	callback(data);
-        };
-        this.error = function(a, b, c) {
-        	console.log('ERROR')
-			console.log(a)
-			console.log(b)
-			console.log(c)
-        };
-	  }
-	}
-
-
-	var rq = new Request('GET', 'Characters/2', doTheThing)
-	$.ajax(rq);
-
-	function doTheThing(data) {
-		console.log(data)
-	}
-
-
-</script>
-
-<!-- <script>
-	console.log('test5')
-
-	const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
-
-	window.onload = function () {
-		google.accounts.id.initialize({
-			client_id: CLIENT_ID,
-			callback: resfun
-		});
-		google.accounts.id.prompt((notification) => {
-      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-      	console.log('broken')
-        // continue with another identity provider.
-      }
-    });
-		// google.accounts.id.prompt();
-	};
-
-	function resfun(args) {
-		console.log(args)
-	}
-</script> -->
-
 </html>

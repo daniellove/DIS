@@ -1,86 +1,36 @@
-console.log('ready2')
+console.log(0)
 
-/**
-* Sample JavaScript code for sheets.spreadsheets.values.get
-* See instructions for running APIs Explorer code samples locally:
-* https://developers.google.com/explorer-help/code-samples#javascript
-*/
-
-const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
-const API_KEY = 'AIzaSyB6A4LdYKP_r0Y7xMnhpAJ1H4aouVb5g5U';
-const CLIENT_ID = '926782039243-1c74ts1tg8boub4i4k2ql0a35ueste4l.apps.googleusercontent.com';
-const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
-// const SCOPE = 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly';
-
-var RANGE = "Characters!A:BA"
-
-function authenticate() {
-	return gapi.auth2.getAuthInstance()
-	.signIn({scope: SCOPE})
-	.then(function() { console.log("Sign-in successful"); },
-		function(err) { console.error("Error signing in", err); });
+function getTheThing() {
+	var rq = new Request('GET', 'Characters/2', doTheThing)
+	$.ajax(rq);
 }
 
-function loadClient() {
-	gapi.client.setApiKey(API_KEY);
-	return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
-	.then(function() { 
-		console.log("GAPI client loaded for API"); 
-		$('#auth').hide()
-		$('#execute').show()
-		$('#execute2').show()
-	},
-	function(err) { console.error("Error loading GAPI client for API", err); });
+function postTheThing() {
+
 }
 
- // Make sure the client is loaded and sign-in is complete before calling this method.
-function execute() {
-	return gapi.client.sheets.spreadsheets.values.get({
-		"spreadsheetId": SHEET_ID,
-		"range": RANGE
-	})
-	.then(function(response) {
-        // Handle the results here (response.result has the parsed body).
-		console.log("Response", response);
-	},
-	function(err) { console.error("Execute error", err); });
+function doTheThing(data) {
+	console.log(data)
 }
 
-function execute2() {
-    return gapi.client.sheets.spreadsheets.values.update({
-      "spreadsheetId": "13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM",
-      "range": "Characters!R6C1",
-      "responseValueRenderOption": "UNFORMATTED_VALUE",
-      "valueInputOption": "RAW",
-      "resource": {
-        "values": [
-          [
-            "TEST"
-          ]
-        ]
-      }
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function(err) { console.error("Execute error", err); });
-  }
-
-gapi.load("client:auth2", function() {
-	gapi.auth2.init({client_id: CLIENT_ID});
-});
-
-$(function() {	
-	$('#auth').on('click', function() {
-		authenticate().then(loadClient);
-		return
-	});
-	$('#execute').on('click', execute);
-	$('#execute2').on('click', execute2);
-})
-
-// const auth = new google.auth.GoogleAuth({
-//   keyFile: '/path/to/your-secret-key.json',
-//   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-// });
+class Request {
+	constructor(method, endpoint, callback) {
+		this.type = method;
+		this.url = `https://api.sheetson.com/v2/sheets/${endpoint}`;
+		this.withCredentials = true;
+		this.headers = {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU',
+			'X-Sheetson-Spreadsheet-Id': '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM'
+		};
+		this.success = function(data) {
+			callback(data);
+		};
+		this.error = function(a, b, c) {
+			console.log('ERROR');
+			console.log(a);
+			console.log(b);
+			console.log(c);
+		};
+	};
+};
