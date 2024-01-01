@@ -22,11 +22,11 @@ class Request {
 	};
 };
 
-function getTheThing() {
+// function getTheThing() {
 	var rq = new Request('GET', 'Characters/2', doTheThing);
 	console.log(rq);
 	$.ajax(rq);
-}
+// }
 
 function postTheThing() {
 
