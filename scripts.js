@@ -1,4 +1,4 @@
-console.log(2)
+console.log(3)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -8,7 +8,7 @@ const HEADERS = {
     'X-Spreadsheet-Id': SHEET_ID,
     'Content-Type': 'application/json'
 }
-const ROW_COUNT = 2;
+const ROW_COUNT = 20;
 
 var SHEET_HEADERS = [];
 var SHEET_ROWS = [];
