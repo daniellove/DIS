@@ -1,4 +1,4 @@
-console.log(4)
+console.log(5)
 
 // class Request {
 // 	constructor(method, endpoint, callback) {
@@ -30,8 +30,9 @@ const HEADERS = {
     'X-Spreadsheet-Id': SHEET_ID,
     'Content-Type': 'application/json'
 }
-var sheetHeaders = []
-var startingRow = 2
+var SHEET_HEADERS = [];
+var SHEET_ROWS = [];
+var START_ROW = 2;
 
 function populateRows() {
 
@@ -43,13 +44,34 @@ function getRow(row) {
 	var params = {
 		apiKey: API_KEY,
 		spreadsheetId: SHEET_ID
-	}
+	};
 
-	Object.keys(params).forEach(key => url.searchParams.append(key, encodeURIComponent(params[key])));
+	Object.keys(params).forEach(
+		key => url.searchParams.append(
+			key, encodeURIComponent(params[key])
+		)
+	);
 
 	fetch(url)
 		.then(r => r.json())
-		.then(result => console.log(result));
+		.then(function(result) {
+			if (SHEET_HEADERS.length == 0) {
+				for (var column in result) {
+					if {column != 'rowIndex'} SHEET_HEADERS.push(column);
+				};
+				console.log(SHEET_HEADERS);
+			};
+
+			if (typeof result['character_id'] != 'undefined') {
+				SHEET_ROWS.push(result);
+				var NEXT_ROW = row++;
+				getRow(row);
+			} else {
+				console.log(SHEET_ROWS);
+			};
+
+			return
+		});
 
 	return
 };
