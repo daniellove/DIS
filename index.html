@@ -50,30 +50,34 @@
 </body>
 
 <script type="text/javascript">
-	console.log(4)
+	console.log(5)
 
 	// const fetch = require('isomorphic-fetch');
 	const apiKey ='YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 	const spreadsheetId = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
 
-	$.ajax({
-		type: 'GET',
-		url: 'https://api.sheetson.com/v2/sheets/Characters',
-		withCredentials: true,
-        headers: {
+	var method = ;
+	var url = ;
+
+	var request = {};
+		request['type'] = 'GET';
+		request['url'] = 'https://api.sheetson.com/v2/sheets/Characters';
+		request['withCredentials'] = true;
+		request['headers'] = {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + apiKey,
           'X-Sheetson-Spreadsheet-Id': spreadsheetId
-        },
-		success: function(data) {
+        };
+        request['success'] = function(data) {
 			console.log(data)
-		},
-		error: function(a, b, c) {
+		};
+        request['error'] = function(a, b, c) {
 			console.log(a)
 			console.log(b)
 			console.log(c)
-		}
-	});
+		};
+
+	$.ajax(request);
 	// const url = new URL("https://api.sheetson.com/v2/sheets/Characters/1");
 	// Object.keys(params).forEach(key => url.searchParams.append(key, encodeURIComponent(params[key])));
 	// fetch(url).then(r => r.json())
