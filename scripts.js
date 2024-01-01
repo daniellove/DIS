@@ -1,4 +1,4 @@
-console.log(6)
+console.log(7)
 
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
@@ -71,6 +71,8 @@ function postRow(data) {
 		var content = data[i];
 		row[header] = content;
 	};
+
+	console.log(row)
 
 	fetch(HOST_URL, {
 		method: 'POST',
