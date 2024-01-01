@@ -1,7 +1,8 @@
-console.log(0)
+console.log(1)
 
 function getTheThing() {
-	var rq = new Request('GET', 'Characters/2', doTheThing)
+	var rq = new Request('GET', 'Characters/2', doTheThing);
+	console.log(rq);
 	$.ajax(rq);
 }
 
