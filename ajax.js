@@ -1,7 +1,7 @@
 const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
-const CHARACTERS_URL = 'https://api.sheetson.com/v2/sheets/Characters';
-const LEVELS_URL = 'https://api.sheetson.com/v2/sheets/Levels';
+const CHAR_URL = 'https://api.sheetson.com/v2/sheets/Characters';
+const LEVEL_URL = 'https://api.sheetson.com/v2/sheets/Levels';
 const HEADERS = {
 	'Authorization': `Bearer ${API_KEY}`,
     'X-Spreadsheet-Id': SHEET_ID,
@@ -10,17 +10,20 @@ const HEADERS = {
 const ROW_COUNT = 24;
 
 var CURRENT_CHARACTER = 4;
-var SHEET_HEADERS = [];
-var SHEET_ROWS = [];
-var LEVELS = [];
+var CHAR_HEADERS = [];
+var CHAR_ROWS = [];
+var LEVEL_ROWS = [];
 var ROW_SKIPS = 0 
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 const TEST_UPDATE = {'character_name': 'New Name'}
 
 $.ajaxSetup({headers: HEADERS});
-getData(CHARACTERS_URL, processCharacters);
-function getData(url, callback) {
+getData(CHAR_URL, ROW_SKIPS, processCharacters);
+getData(LEVEL_URL, ROW_SKIPS, processLevels);
+
+
+function getData(url, skips, callback) {
 	$.ajax({
 		type: 'GET',
 		url: url,
@@ -28,49 +31,63 @@ function getData(url, callback) {
 			'apiKey': API_KEY,
 			'spreadsheetId': SHEET_ID,
 			'limit': ROW_COUNT.toString(),
-			'skip': ROW_SKIPS.toString(),
+			'skip': skips.toString(),
 			'no-cache': true
 		},
-		success: (data => callback(url, data))
+		success: (data => callback(url, skips, data))
 	});
-
-	return
-}
-
-function processCharacters(url, data) {
-	console.log(data);
-
-	SHEET_ROWS = SHEET_ROWS.concat(data['results']);
-	if (SHEET_HEADERS.length == 0) {
-		for (var column in SHEET_ROWS[0]) {
-			if (column != 'rowIndex') SHEET_HEADERS.push(column);
-		};
-	};
-
-	if (data['hasNextPage']) {
-		if (!ROW_SKIPS) ROW_SKIPS = 1;
-		ROW_SKIPS = ROW_SKIPS + ROW_COUNT;
-		getData(url, processCharacters);
-	} else {
-		console.log('Data loaded:');
-		console.log(SHEET_ROWS);
-	}
 
 	return
 };
 
+function processCharacters(url, skips, data) {
+	console.log(data);
+
+	CHAR_ROWS = CHAR_ROWS.concat(data['results']);
+	if (CHAR_HEADERS.length == 0) {
+		for (var column in CHAR_ROWS[0]) {
+			if (column != 'rowIndex') CHAR_HEADERS.push(column);
+		};
+	};
+
+	var nextBatch = moreData(data, skips)
+	if (nextBatch) getData(url, skips, processCharacters);
+	else console.log(CHAR_ROWS);
+
+	return
+};
+
+function processLevels(url, skips, data) {
+	console.log(data);
+
+	LEVEL_ROWS = LEVEL_ROWS.concat(data['results']);
+
+	var nextBatch = moreData(data, skips)
+	if (nextBatch) getData(url, skips, processLevels);
+	else console.log(LEVEL_ROWS);
+}
+
+function moreData(data, skips) {
+	if (data['hasNextPage']) {
+		if (!skips) skips = 1;
+		skips = skips + ROW_COUNT;
+		return skips
+	};
+	return false
+}
+
 
 function postCharacter(data) {
 	var row = {};
-	for (var i in SHEET_HEADERS) {
-		var header = SHEET_HEADERS[i];
+	for (var i in CHAR_HEADERS) {
+		var header = CHAR_HEADERS[i];
 		var content = data[i];
 		row[header] = content;
 	};
 
 	$.ajax({
 		type: 'POST',
-		url: CHARACTERS_URL,
+		url: CHAR_URL,
 		data: JSON.stringify(row),
 		success: function(response) {
 			console.log(response)
@@ -84,7 +101,7 @@ function updateCharacter(data) {
 
 	$.ajax({
 		type: 'PUT',
-		url: CHARACTERS_URL + '/' + CURRENT_CHARACTER,
+		url: CHAR_URL + '/' + CURRENT_CHARACTER,
 		data: JSON.stringify(data),
 		success: function(response) {
 			console.log('Successfully updated cell:')
