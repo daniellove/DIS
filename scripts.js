@@ -1,4 +1,4 @@
-console.log(8)
+console.log(9)
 
 // class Request {
 // 	constructor(method, endpoint, callback) {
@@ -32,20 +32,16 @@ const HEADERS = {
 }
 var SHEET_HEADERS = [];
 var SHEET_ROWS = [];
-var DATA_ROW = 2;
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
-function populateRows() {
+function getRows() {
 
-}
-
-function getRow(row) {
-
-	var url = new URL(HOST_URL + '/' + row);
+	var url = new URL(HOST_URL);
 	var params = {
 		apiKey: API_KEY,
-		spreadsheetId: SHEET_ID
+		spreadsheetId: SHEET_ID,
+		limit: '100'
 	};
 
 	Object.keys(params).forEach(
@@ -56,34 +52,27 @@ function getRow(row) {
 
 	fetch(url)
 		.then(r => r.json())
-		.then(result => processRows(result));
+		.then(results => processRows(results));
 
 	return
-};
 
-function processRows(result) {
-	if (SHEET_HEADERS.length == 0) {
-		for (var column in result) {
+	function processRows(results) {
+		for (var column in results[0]) {
 			if (column != 'rowIndex') SHEET_HEADERS.push(column);
 		};
+		SHEET_ROWS = results;
 		console.log(SHEET_HEADERS);
-	};
-
-	if (typeof result['character_id'] != 'undefined') {
-		SHEET_ROWS.push(result);
-		DATA_ROW++
-		getRow(DATA_ROW);
-	} else {
 		console.log(SHEET_ROWS);
-	};
 
-	return
-}
+		return
+	};
+};
+
 
 function postRow(data) {
 	var row = {};
-	for (var i in SHEET_ROWS) {
-		var header = SHEET_ROWS[i];
+	for (var i in SHEET_HEADERS) {
+		var header = SHEET_HEADERS[i];
 		var content = data[i];
 		row[header] = content;
 	};
@@ -91,7 +80,7 @@ function postRow(data) {
 	fetch(HOST_URL, {
 		method: 'POST',
 		headers: HEADERS,
-		body: JSON.stringify(data)
+		body: JSON.stringify(row)
 	})
 		.then(r => r.json())
 		.then(result => console.log(result));
