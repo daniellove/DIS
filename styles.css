@@ -80,7 +80,7 @@ input[options] {
 	cursor: pointer;
 }
 
-.character_field input {
+.showingOptions input {
 	border-radius: 4px 4px 0 0;
 }
 
