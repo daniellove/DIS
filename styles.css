@@ -139,6 +139,8 @@ input[options] {
 	height: 3rem;
 	border-radius: 50%;
 	border: 2px solid black;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
 
