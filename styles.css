@@ -139,6 +139,7 @@ input[options] {
 	height: 3rem;
 	border-radius: 50%;
 	border: 2px solid black;
+	transform: translate(-50%, -50%);
 }
 
 #int_talents .talent {
@@ -180,6 +181,7 @@ td {
 
 #create_character,
 #select_character,
-#character_fields {
+#character_fields,
+#svgContainer {
 	display: none;
 }
