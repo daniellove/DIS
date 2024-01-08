@@ -102,15 +102,21 @@ $(function() {
 		for (var i = TALENT_COLS; i > 0; i--) rows.append('<td></td>');
 	});
 
-	$('[pos_x]').each(function() {
+	$('[pos_x]').each(updateX);
+	$('[pos_y]').each(updateY);
+	$('[pos_x]').on('change', updateX);
+	$('[pos_y]').on('change', updateY);
+
+	function updateX() {
 		var pos = +$(this).attr('pos_x');
 		var left = 100 / TALENT_COLS * pos;
 		$(this).css('left',  `${left}%`)
-	})
+	};
 
-	$('[pos_y]').each(function() {
+
+	function updateY() {
 		var pos = +$(this).attr('pos_y');
 		var left = 100 / TALENT_ROWS * pos;
 		$(this).css('top',  `${left}%`)
-	})
+	};
 });
