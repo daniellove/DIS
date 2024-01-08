@@ -86,3 +86,16 @@ function processInput(input) {
 
 	return
 };
+
+$(function() {
+	$('.talent_tree').each(function() {
+		var container = $(this)
+		container.prepend('<table class="talent_grid"></table>');
+
+		var table = container.children('.talent_grid');
+		for (var i = 50; i > 0; i--) table.append('<tr></tr>');
+
+		var rows = table.children('tr')
+		for (var i = 30; i > 0; i--) rows.append('<td></td>');
+	});
+})
