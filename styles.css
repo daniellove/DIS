@@ -134,21 +134,27 @@ input[options] {
 }
 
 .talent {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	border: 2px solid black;
+	background: white;
+}
+
+#int_talents .talent {
+	background: var(--blue);
+}
+#dex_talents .talent {
+	background: var(--green);
+}
+#str_talents .talent {
+	background: var(--red);
+}
+
+.talent i {
 	width: 100%;
 	line-height: calc(3rem - 4px);
 	font-size: 1.5rem;
-	color: grey;
-	text-align: center;
-}
-
-#int_talents .talent {background: var(--blue);}
-#dex_talents .talent {background: var(--green);}
-#str_talents .talent {background: var(--red);}
-
-.talent i {
-	width: 3rem;
-	line-height: 3rem;
-	font-size: 2rem;
 	color: grey;
 	text-align: center;
 }
