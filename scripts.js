@@ -21,6 +21,9 @@ const DROP_OPTIONS = {
 	}
 };
 
+const TALENT_ROWS = 50;
+const TALENT_COLS = 30;
+
 $(document).on('click', '.dropdown', function(event) {
 	event.stopPropagation();
 	var container = $(this).closest('.character_field');
@@ -93,9 +96,21 @@ $(function() {
 		container.prepend('<table class="talent_grid"></table>');
 
 		var table = container.children('.talent_grid');
-		for (var i = 50; i > 0; i--) table.append('<tr></tr>');
+		for (var i = TALENT_ROWS; i > 0; i--) table.append('<tr></tr>');
 
 		var rows = table.children('tr')
-		for (var i = 30; i > 0; i--) rows.append('<td></td>');
+		for (var i = TALENT_COLS; i > 0; i--) rows.append('<td></td>');
 	});
-})
+
+	$('[pos_x]').each(function() {
+		var pos = +$(this).attr('pos_x');
+		var left = 100 / TALENT_COLS * pos;
+		$(this).css('left',  `${left}%`)
+	})
+
+	$('[pos_y]').each(function() {
+		var pos = +$(this).attr('pos_y');
+		var left = 100 / TALENT_ROWS * pos;
+		$(this).css('top',  `${left}%`)
+	})
+});
