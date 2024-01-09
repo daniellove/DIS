@@ -2,6 +2,7 @@
 	--red: #ff3721;
 	--blue: #6c8cde;
 	--green: #3aac72;
+	--border: 2px solid #000;
 }
 
 html {
@@ -128,7 +129,7 @@ input[options] {
 	height: calc(100% - 4rem);
 	float: left;
 	border-radius: 4px;
-	border: 2px solid black;
+	border: var(--border);
 	margin: 2rem;
 	position: relative;
 }
@@ -139,7 +140,7 @@ input[options] {
     height: 0;
     padding-bottom: calc(10% - 4px);
 	border-radius: 50%;
-	border: 2px solid black;
+	border: var(--border);
 	-webkit-transform: translate(-50%, -50%);
 	-moz-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
@@ -225,8 +226,8 @@ td {
 	border: 2px solid rgba(0,0,0,0.15);
 }
 
-td.horz {border-top-color: black}
-td.vert {border-left-color: black}
+td.horz {border-top: var(--border)}
+td.vert {border-left: var(--border)}
 
 /* TEMP STYLES */
 

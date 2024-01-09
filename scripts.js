@@ -122,13 +122,13 @@ $(function() {
 	for (var stat in TREE_LINES) {
 		var container = $(`#${stat}_talents .talent_grid`);
 
-		console.log(`doing ${stat}`)
+		// console.log(`doing ${stat}`)
 
 		var horz = TREE_LINES[stat]['horz'];
 		for (var data of horz) {
 
-			console.log(`doing:`)
-			console.log(data)
+			// console.log(`doing:`)
+			// console.log(data)
 
 			var d = data.split(':');
 			var r = d[0];
@@ -138,8 +138,8 @@ $(function() {
 				var cell = $(row.children('td')[i]);
 				cell.addClass('horz');
 
-				console.log(`doing:`)
-				console.log(cell)
+				// console.log(`doing:`)
+				// console.log(cell)
 
 			}
 		};
