@@ -198,6 +198,10 @@ input[options] {
 	padding: 0;
 }
 
+.talent .info .name {
+	text-align: left;
+}
+
 .talent:hover .info {
 	display: block;
 }
