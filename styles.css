@@ -135,9 +135,9 @@ input[options] {
 
 .talent {
 	position: absolute;
-	width: 10%;
+	width: 6.67%;
     height: 0;
-    padding-bottom: calc(10% - 4px);
+    padding-bottom: calc(6.67% - 4px);
 	border-radius: 50%;
 	border: 2px solid black;
 	-webkit-transform: translate(-50%, -50%);
@@ -157,18 +157,24 @@ input[options] {
 }
 
 .talent i {
-	width: 100%;
-	line-height: calc(3rem - 4px);
-	font-size: 1.5rem;
+	font-size: 1rem;
+	line-height: 1;
 	color: #FFF;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	left: 0;
+	width: 100%;
 	text-align: center;
 }
 
 .talent i.fa-crosshairs-simple {
-	font-size: 1.7rem;
-	position: relative;
+	font-size: 1.1rem;
+	/*position: relative;
 	top: 1px;
-	left: 0px;
+	left: 0px;*/
 }
 
 .talent .info {
