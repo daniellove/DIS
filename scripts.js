@@ -122,45 +122,27 @@ $(function() {
 	for (var stat in TREE_LINES) {
 		var container = $(`#${stat}_talents .talent_grid`);
 
-		// console.log(`doing ${stat}`)
-
 		var horz = TREE_LINES[stat]['horz'];
 		for (var data of horz) {
-
-			// console.log(`doing:`)
-			// console.log(data)
-
 			var d = data.split(':');
 			var r = d[0];
 			var row = $(container.children('tr')[+r]);
 			var c = d[1].split('-');
-			for (var i = +c[0]; i <= +c[1]; i++) {
+			for (var i = +c[0] - 1; i < +c[1] - 1; i++) {
 				var cell = $(row.children('td')[i]);
 				cell.addClass('horz');
-
-				// console.log(`doing:`)
-				// console.log(cell)
-
 			}
 		};
 
 		var vert = TREE_LINES[stat]['vert'];
 		for (var data of vert) {
-
-			console.log(`doing:`)
-			console.log(data)
-
 			var d = data.split(':');
 			var r = d[0].split('-');
-			var col = +d[1];
-			for (var i = +r[0]; i <= +r[1]; i++) {
+			var col = d[1] - 1;
+			for (var i = + r[0] - 1; i <= r[1]; i++) {
 				var row = $(container.children('tr')[i]);
 				var cell = $(row.children('td')[col]);
 				cell.addClass('vert');
-
-				console.log(`doing:`)
-				console.log(cell)
-				
 			}
 		};
 	};

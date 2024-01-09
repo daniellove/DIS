@@ -197,7 +197,7 @@ input[options] {
 	border-radius: 4px;
 	margin: 0;
 	padding: 1rem;
-	background: rgba(0,0,0,0.1);
+	background: rgb(220 220 220);
 	font-size: 1rem;
 	line-height: 1.25;
 }
@@ -226,8 +226,8 @@ td {
 	border: 2px solid rgba(0,0,0,0.15);
 }
 
-td.horz {border-top: var(--border)}
-td.vert {border-left: var(--border)}
+td.horz {border-bottom: var(--border)}
+td.vert {border-right: var(--border)}
 
 /* TEMP STYLES */
 
