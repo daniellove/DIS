@@ -23,20 +23,20 @@ const DROP_OPTIONS = {
 
 const TREE_LINES = {
 	str: {
-		horz: []
-		vert: []
+		horz: [],
+		vert: [],
 	
 	},
 	dex: {
-		horz: []
-		vert: []
+		horz: [],
+		vert: [],
 	
 	},
 	int: {
-		horz: ['19:3-11']
-		vert: ['5-15:7']
-	}
-}
+		horz: ['19:3-11'],
+		vert: ['5-15:7'],
+	},
+};
 
 const TALENT_ROWS = 50;
 const TALENT_COLS = 30;
