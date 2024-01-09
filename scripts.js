@@ -34,7 +34,7 @@ const TREE_LINES = {
 	},
 	int: {
 		horz: ['19:3-11'],
-		vert: ['5-15:7'],
+		vert: ['5-19:7'],
 	},
 };
 
@@ -125,10 +125,10 @@ $(function() {
 		var horz = TREE_LINES[stat]['horz'];
 		for (var data of horz) {
 			var d = data.split(':');
-			var r = d[0];
+			var r = d[0] - 1;
 			var row = $(container.children('tr')[+r]);
 			var c = d[1].split('-');
-			for (var i = +c[0] - 1; i < +c[1] - 1; i++) {
+			for (var i = +c[0]; i < +c[1]; i++) {
 				var cell = $(row.children('td')[i]);
 				cell.addClass('horz');
 			}
@@ -139,7 +139,7 @@ $(function() {
 			var d = data.split(':');
 			var r = d[0].split('-');
 			var col = d[1] - 1;
-			for (var i = + r[0] - 1; i <= r[1]; i++) {
+			for (var i = + r[0]; i <= r[1]; i++) {
 				var row = $(container.children('tr')[i]);
 				var cell = $(row.children('td')[col]);
 				cell.addClass('vert');
