@@ -220,11 +220,15 @@ input[options] {
     height: 100%;
 }
 
-/* TEMP STYLES */
-
 td {
-    border: 1px solid rgba(0,0,0,0.15);
+	border: 2px solid transparent;
+	border: 2px solid rgba(0,0,0,0.15);
 }
+
+td.horz {border-top-color: black};
+td.vert {border-left-color: black};
+
+/* TEMP STYLES */
 
 #create_character,
 #select_character,

@@ -21,6 +21,23 @@ const DROP_OPTIONS = {
 	}
 };
 
+const TREE_LINES = {
+	str: {
+		horz: []
+		vert: []
+	
+	},
+	dex: {
+		horz: []
+		vert: []
+	
+	},
+	int: {
+		horz: ['19:3-11']
+		vert: ['5-15:7']
+	}
+}
+
 const TALENT_ROWS = 50;
 const TALENT_COLS = 30;
 
@@ -102,21 +119,43 @@ $(function() {
 		for (var i = TALENT_COLS; i > 0; i--) rows.append('<td></td>');
 	});
 
-	$('[pos_x]').each(updateX);
-	$('[pos_y]').each(updateY);
-	$('[pos_x]').on('change', updateX);
-	$('[pos_y]').on('change', updateY);
+	for (var stat in TREE_LINES) {
+		var container = $(`#${stat}_talents .talent_grid`);
 
-	function updateX() {
+		var horz = TREE_LINES[stat]['horz'];
+		for (var data of horz) {
+			var d = data.split(':');
+			var r = d[0];
+			var row = $(container.children('tr')[+r]);
+			var c = d[1].split('-');
+			for (var i = +c[0]; i <= +c[1]; i++) {
+				var cell = $(row.children('td')[i]);
+				cell.addClass('horz');
+			}
+		};
+
+		var vert = TREE_LINES[stat]['vert'];
+		for (var data of vert) {
+			var d = data.split(':');
+			var r = d[0].split('-');
+			var col = +d[1];
+			for (var i = +r[0]; i <= +r[1]; i++) {
+				var row = $(container.children('tr')[i]);
+				var cell = $(row.children('td')[col]);
+				cell.addClass('vert');
+			}
+		};
+	};
+
+	$('[pos_x]').each(function () {
 		var pos = +$(this).attr('pos_x');
 		var left = 100 / TALENT_COLS * pos;
 		$(this).css('left',  `${left}%`)
-	};
+	});
 
-
-	function updateY() {
+	$('[pos_y]').each(function () {
 		var pos = +$(this).attr('pos_y');
 		var left = 100 / TALENT_ROWS * pos;
 		$(this).css('top',  `${left}%`)
-	};
+	});
 });
