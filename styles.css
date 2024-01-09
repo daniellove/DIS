@@ -158,49 +158,9 @@ input[options] {
 	opacity: var(--faded);
 }
 
-.talent_block:hover .talent,
-.talent_block:hover .talent_nav {
-	opacity: 1;
-}
-
 .talent:hover {
+	opacity: 1;
 	z-index: 999;
-}
-
-
-.talent_nav {
-	opacity: 0;
-	position: absolute;
-	z-index: 1;
-	color: #FFF;
-}
-
-.talent_nav.fa-arrow-down-long {
-	left: 50%;
-	bottom: -4px;
-	-webkit-transform: translate(-50%, 100%);
-	-moz-transform: translate(-50%, 100%);
-	transform: translate(-50%, 100%);
-}
-
-.talent_nav.fa-turn-left-down {
-	left: -4px;
-	top: 50%;
-	-webkit-transform: translate(-100%, -50%);
-	-moz-transform: translate(-100%, -50%);
-	transform: translate(-100%, -50%);
-}
-
-.talent_nav.fa-turn-down {
-	right: -4px;
-	top: 50%;
-	-webkit-transform: translate(100%, -50%);
-	-moz-transform: translate(100%, -50%);
-	transform: translate(100%, -50%);
-}
-
-.talent:hover .talent_nav {
-	display: block;
 }
 
 #int_talents .talent {background: var(--blue)}
