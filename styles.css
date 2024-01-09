@@ -223,7 +223,7 @@ input[options] {
 
 td {
 	border: 2px solid transparent;
-	border: 2px solid rgba(0,0,0,0.15);
+	border: 2px solid rgba(0,0,0,0.1);
 }
 
 td.horz {border-bottom: var(--border)}
