@@ -144,6 +144,11 @@ input[options] {
 	-moz-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	cursor: pointer;
+	z-index: 1;
+}
+
+.talent:hover {
+	z-index: 999;
 }
 
 #int_talents .talent {
@@ -156,7 +161,8 @@ input[options] {
 	background: var(--red);
 }
 
-.talent i {
+.talent i.fa-solid,
+.talent i.fa-regular  {
 	font-size: 1rem;
 	line-height: 1;
 	color: #FFF;
@@ -181,9 +187,11 @@ input[options] {
 	display: none;
 	position: absolute;
 	bottom: -4px;
-	transform: translateY(100%);
-	left: -50%;
-	width: 200%;
+	left: 50%;
+	width: 800%;
+	-webkit-transform: translate(-50%, 100%);
+	-moz-transform: translate(-50%, 100%);
+	transform: translate(-50%, 100%);
 	text-align: center;
 	border-radius: 4px;
 	margin: 0;
