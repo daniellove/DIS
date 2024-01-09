@@ -143,7 +143,8 @@ input[options] {
 	position: relative;
 }
 
-.talent {
+.talent,
+[join_id] {
 	position: absolute;
 	width: 5%;
     height: 0;
@@ -156,6 +157,14 @@ input[options] {
 	cursor: pointer;
 	z-index: 1;
 	opacity: var(--faded);
+}
+
+[join_id] {
+	width: 4px;
+	height: 4px;
+	padding: 0;
+	background: #FFF;
+	cursor: initial;
 }
 
 .talent:hover {
