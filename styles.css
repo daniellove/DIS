@@ -2,7 +2,8 @@
 	--red: #ff3721;
 	--blue: #6c8cde;
 	--green: #3aac72;
-	--border: 2px solid #000;
+	--border: 2px solid #FFF;
+	--faded: 0.5;
 }
 
 html {
@@ -140,6 +141,7 @@ input[options] {
 	border: var(--border);
 	margin: 2rem;
 	position: relative;
+	opacity: var(--faded);
 }
 
 .talent {
@@ -154,10 +156,12 @@ input[options] {
 	transform: translate(-50%, -50%);
 	cursor: pointer;
 	z-index: 1;
+	opacity: var(--faded);
 }
 
 .talent:hover {
 	z-index: 999;
+	opacity: 1;
 }
 
 #int_talents .talent {background: var(--blue)}
@@ -226,7 +230,9 @@ input[options] {
     height: 100%;
 }
 
-
+td {
+	border: 2px solid transparent;
+}
 
 td.horz {border-bottom: var(--border)}
 td.vert {border-right: var(--border)}
@@ -240,7 +246,3 @@ td.vert {border-right: var(--border)}
 	display: none;
 }
 
-/*td {
-	border: 2px solid transparent;
-	border: 2px solid rgba(0,0,0,0.1);
-}*/
