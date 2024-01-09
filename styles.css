@@ -225,8 +225,8 @@ td {
 	border: 2px solid rgba(0,0,0,0.15);
 }
 
-td.horz {border-top-color: black};
-td.vert {border-left-color: black};
+td.horz {border-top-color: black}
+td.vert {border-left-color: black}
 
 /* TEMP STYLES */
 
