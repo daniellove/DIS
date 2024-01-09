@@ -40,8 +40,8 @@ const TREE_LINES = {
 		vert: [
 			'12-19:3', '5-19:7', '12-19:11', // sorcery tree
 			'12-19:19', '5-19:23', '12-19:27', // curses tree
-			'31-29:5', '31-45:7', // defences tree
-			'31-29:23', '31-45:25', // defences tree
+			'31-39:5', '31-45:7', // defences tree
+			'31-39:23', '31-45:25', // defences tree
 		],
 	},
 };

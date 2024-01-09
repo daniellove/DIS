@@ -225,10 +225,7 @@ input[options] {
     height: 100%;
 }
 
-td {
-	border: 2px solid transparent;
-	border: 2px solid rgba(0,0,0,0.1);
-}
+
 
 td.horz {border-bottom: var(--border)}
 td.vert {border-right: var(--border)}
@@ -241,3 +238,8 @@ td.vert {border-right: var(--border)}
 #svgContainer {
 	display: none;
 }
+
+/*td {
+	border: 2px solid transparent;
+	border: 2px solid rgba(0,0,0,0.1);
+}*/
