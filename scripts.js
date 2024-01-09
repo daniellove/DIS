@@ -47,7 +47,7 @@ const TREE_LINES = {
 };
 
 const TALENT_ROWS = 50;
-const TALENT_COLS = 30;
+const TALENT_COLS = 60;
 
 $(document).on('click', '.dropdown', function(event) {
 	event.stopPropagation();
@@ -157,7 +157,7 @@ $(function() {
 
 	$('[pos_x]').each(function () {
 		var pos = +$(this).attr('pos_x');
-		var left = 100 / TALENT_COLS * pos;
+		var left = 100 / TALENT_COLS * (pos * 2);
 		$(this).css('left',  `${left}%`)
 	});
 

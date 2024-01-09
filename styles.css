@@ -133,9 +133,9 @@ input[options] {
 
 
 .talent_tree {
-	width: calc(33% - 12rem / 3);
+	width: calc(66% - 6rem);
 	height: calc(100% - 4rem);
-	float: left;
+	float: right;
 	border-radius: 4px;
 	border: var(--border);
 	margin: 2rem;
@@ -144,9 +144,9 @@ input[options] {
 
 .talent {
 	position: absolute;
-	width: 10%;
+	width: 5%;
     height: 0;
-    padding-bottom: calc(10% - 4px);
+    padding-bottom: calc(5% - 4px);
 	border-radius: 50%;
 	border: var(--border);
 	-webkit-transform: translate(-50%, -50%);
