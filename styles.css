@@ -135,9 +135,9 @@ input[options] {
 
 .talent {
 	position: absolute;
-	width: 6.67%;
+	width: 10%;
     height: 0;
-    padding-bottom: calc(6.67% - 4px);
+    padding-bottom: calc(10% - 4px);
 	border-radius: 50%;
 	border: 2px solid black;
 	-webkit-transform: translate(-50%, -50%);
