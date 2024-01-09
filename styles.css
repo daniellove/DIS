@@ -111,6 +111,13 @@ input[options] {
 	height: 100%;
 }
 
+#int_talents {
+	background-image: url('annie.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
 /*#int_talents {
 	background: var(--blue);
 }
@@ -153,15 +160,9 @@ input[options] {
 	z-index: 999;
 }
 
-#int_talents .talent {
-	background: var(--blue);
-}
-#dex_talents .talent {
-	background: var(--green);
-}
-#str_talents .talent {
-	background: var(--red);
-}
+#int_talents .talent {background: var(--blue)}
+#dex_talents .talent {background: var(--green)}
+#str_talents .talent {background: var(--red)}
 
 .talent i.fa-solid,
 .talent i.fa-regular  {
