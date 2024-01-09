@@ -34,14 +34,14 @@ const TREE_LINES = {
 	},
 	int: {
 		horz: [
-			'12:3-11', // sorcery tree
-			'12:19-27', // curses tree
+			'12:6-22', // sorcery tree
+			'12:38-54', // curses tree
 		],
 		vert: [
-			'12-19:3', '5-19:7', '12-19:11', // sorcery tree
-			'12-19:19', '5-19:23', '12-19:27', // curses tree
-			'31-39:5', '31-45:7', // defences tree
-			'31-39:23', '31-45:25', // defences tree
+			'12-19:6', '5-19:14', '12-19:22', // sorcery tree
+			'12-19:38', '5-19:46', '12-19:54', // curses tree
+			'31-39:10', '31-45:14', // defences tree
+			'31-39:46', '31-45:50', // defences tree
 		],
 	},
 };
@@ -157,7 +157,7 @@ $(function() {
 
 	$('[pos_x]').each(function () {
 		var pos = +$(this).attr('pos_x');
-		var left = 100 / TALENT_COLS * (pos * 2);
+		var left = 100 / TALENT_COLS * pos;
 		$(this).css('left',  `${left}%`)
 	});
 
