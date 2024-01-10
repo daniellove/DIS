@@ -163,7 +163,7 @@ function populateTalents() {
 		container.append(`<div class="connection" connection="${id}">`);
 		var connectEle = container.children(`[connection="${id}"]`);
 		var relEle = $(`[t_id="${row['connects_to']}"]`);
-		relEle.addClass(row['connection']);
+		connectEle.addClass(row['connection']);
 
 		switch (row['connection']) {
 			case 'left':
@@ -200,13 +200,10 @@ function populateTalents() {
 
 
 			var obj = {
-				// left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
 				left: left + '%',
-				top: top + '%',
+				top: `calc(${top}% - 1px)`,
 				right: right + '%',
 			}
-
-			console.log(obj);
 
 			return obj;
 		};
