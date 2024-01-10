@@ -166,15 +166,17 @@ function populateTalents() {
 
 		switch (row['connection']) {
 			case 'left':
-				connectEle.css(leftObj())
+				var obj = leftObj();
 				break;
 			case 'right':
-				rightObj()
+				var obj = rightObj();
 				break;
 			case 'top':
-				topObj()
+				var obj = topObj();
 				break;
 		};
+
+		connectEle.css(obj);
 
 		return
 
