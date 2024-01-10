@@ -241,12 +241,12 @@ input[options] {
 	width: 3px;
 }
 
-/*td {
+td {
 	border: 2px solid transparent;
 }
 
 td.horz {border-bottom: var(--border)}
-td.vert {border-right: var(--border)}*/
+td.vert {border-right: var(--border)}
 
 
 /* TEMP STYLES */
@@ -257,3 +257,19 @@ td.vert {border-right: var(--border)}*/
 	display: none;
 }
 
+#dex_talents {
+	background: var(--green);
+}
+
+#str_talents {
+	background: var(--red);
+}
+
+/*#int_talents {
+	background: var(--blue);
+}
+
+
+
+
+*/
