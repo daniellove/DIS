@@ -239,6 +239,7 @@ input[options] {
 	background-color: #FFF;
 	position: absolute;
 	display: block;
+	opacity: var(--faded);
 }
 
 /*td {
