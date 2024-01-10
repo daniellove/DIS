@@ -127,43 +127,75 @@ $(function() {
 		for (var i = TALENT_COLS; i > 0; i--) rows.append('<td></td>');
 	});
 
-	for (var stat in TREE_LINES) {
-		var container = $(`#${stat}_talents .talent_grid`);
+	// for (var stat in TREE_LINES) {
+	// 	var container = $(`#${stat}_talents .talent_grid`);
 
-		var horz = TREE_LINES[stat]['horz'];
-		for (var data of horz) {
-			var d = data.split(':');
-			var r = d[0] - 1;
-			var row = $(container.children('tr')[+r]);
-			var c = d[1].split('-');
-			for (var i = +c[0]; i < +c[1]; i++) {
-				var cell = $(row.children('td')[i]);
-				cell.addClass('horz');
-			}
-		};
+	// 	var horz = TREE_LINES[stat]['horz'];
+	// 	for (var data of horz) {
+	// 		var d = data.split(':');
+	// 		var r = d[0] - 1;
+	// 		var row = $(container.children('tr')[+r]);
+	// 		var c = d[1].split('-');
+	// 		for (var i = +c[0]; i < +c[1]; i++) {
+	// 			var cell = $(row.children('td')[i]);
+	// 			cell.addClass('horz');
+	// 		}
+	// 	};
 
-		var vert = TREE_LINES[stat]['vert'];
-		for (var data of vert) {
-			var d = data.split(':');
-			var r = d[0].split('-');
-			var col = d[1] - 1;
-			for (var i = + r[0]; i <= r[1]; i++) {
-				var row = $(container.children('tr')[i]);
-				var cell = $(row.children('td')[col]);
-				cell.addClass('vert');
-			}
-		};
+	// 	var vert = TREE_LINES[stat]['vert'];
+	// 	for (var data of vert) {
+	// 		var d = data.split(':');
+	// 		var r = d[0].split('-');
+	// 		var col = d[1] - 1;
+	// 		for (var i = + r[0]; i <= r[1]; i++) {
+	// 			var row = $(container.children('tr')[i]);
+	// 			var cell = $(row.children('td')[col]);
+	// 			cell.addClass('vert');
+	// 		}
+	// 	};
+	// };
+
+});
+
+function populateTalents() {
+	for (var row of TALENT_DATA) {
+		var container = $(`#${row['talent_tree']}_talents`);
+		container.append(rowEle(row));
+		positionEle(row)
 	};
 
-	$('[pos_x]').each(function () {
-		var pos = +$(this).attr('pos_x');
-		var left = 100 / TALENT_COLS * pos;
-		$(this).css('left',  `${left}%`)
-	});
+	return
 
-	$('[pos_y]').each(function () {
-		var pos = +$(this).attr('pos_y');
-		var left = 100 / TALENT_ROWS * pos;
-		$(this).css('top',  `${left}%`)
-	});
-});
+	function rowEle(row) {
+		var t_id = row['talent_id'];
+		if (t_id.includes('c')) {
+			var ele = `<div join_id="${t_id}"></div>`;
+		} else {
+			var ele = [
+				`<div class="talent" t_id="${row['talent_id']}">`,
+					`<i class="talent_icon ${row['talent_icon']}"></i>`,
+					`<div class="info">`
+						`<p class="name">${row['talent_name']}</p>`,
+						`<p class="desc">${row['talent_description']}</p>`,
+					`</div>`,
+				`</div>`,
+			].join('\n');
+		};
+
+		return ele;			
+		
+	};
+
+	function positionEle(row) {
+		var ele = $(`[t_id="${row['t_id']}"]`);
+		var left = 100 / TALENT_COLS * row['talent_x'];
+		var top = 100 / TALENT_ROWS * row['talent_y'];
+
+		ele.css({
+			'left':  `${left}%`,
+			'top': `${top}%`,
+		});
+
+		return
+	};
+};

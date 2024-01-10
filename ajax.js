@@ -13,6 +13,7 @@ var CURRENT_CHARACTER = 4;
 var CHAR_HEADERS = [];
 var CHAR_ROWS = [];
 var LEVEL_ROWS = [];
+var TALENT_DATA = [];
 var ROW_SKIPS = 0 
 
 const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
@@ -21,6 +22,7 @@ const TEST_UPDATE = {'character_name': 'New Name'}
 $.ajaxSetup({headers: HEADERS});
 getData(CHAR_URL, ROW_SKIPS, processCharacters);
 getData(LEVEL_URL, ROW_SKIPS, processLevels);
+getData(TALENT_URL, ROW_SKIPS, processTalents);
 
 
 function getData(url, skips, callback) {
@@ -66,6 +68,18 @@ function processLevels(url, skips, data) {
 	if (nextBatch) getData(url, nextBatch, processLevels);
 	else console.log(LEVEL_ROWS);
 }
+
+function processTalents(url, skips, data) {
+	console.log(data);
+
+	TALENT_DATA = TALENT_DATA.concat(data['results']);
+
+	var nextBatch = moreData(data, skips)
+	if (nextBatch) getData(url, nextBatch, processTalents);
+	else populateTalents();
+
+	return
+};
 
 function moreData(data, skips) {
 	if (data['hasNextPage']) {
