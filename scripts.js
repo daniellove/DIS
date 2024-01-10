@@ -181,6 +181,13 @@ function populateTalents() {
 		return
 
 		function leftObj() {
+
+			console.log(relEle.css('left'))
+			console.log(relEle.outerWidth(true))
+			console.log(relEle.css('top'))
+			console.log(ele.css('left'))
+			console.log(ele.outerWidth(true))
+
 			var obj = {
 				left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
 				top: `calc(${relEle.css('top')} - 1px)`,
