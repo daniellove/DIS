@@ -163,22 +163,22 @@ function populateTalents() {
 		});
 
 		if (row['connects_to'] === 'FALSE') return
-		var connections = row['connects_to'].split(', ')
-		var directions = row['connection'].split(', ')
-		for (var i in connections) connectEle(container, id, ele, row, connections[i], directions[i]);
+		var rel_ids = row['connects_to'].split(', ')
+		var dirs = row['connection'].split(', ')
+		for (var i in rel_ids) connectEle(container, id, ele, row, rel_ids[i], dirs[i]);
 
 		return
 	};
 
-	function connectEle(container, id, ele, row, connection, direction) {
-		console.log(connection, direction)
-		container.append(`<div class="connection" con_from="${id}" con_to="${connection}">`);
-		var connectEle = container.children(`[con_from="${id}"]`);
-		var relEle = $(`[t_id="${connection}"]`);
-		connectEle.addClass(direction);
+	function connectEle(container, id, ele, row, rel_id, dir) {
+		console.log(rel_id, dir)
+		container.append(`<div class="connection" con_from="${id}" con_to="${rel_id}">`);
+		var connectEle = container.children(`[con_from="${id}"][con_to="${rel_id}"]`);
+		var relEle = $(`[t_id="${rel_id}"]`);
+		connectEle.addClass(dir);
 
 
-		switch (direction) {
+		switch (dir) {
 			case 'left':
 				var obj = leftObj();
 				break;
