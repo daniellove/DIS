@@ -172,9 +172,9 @@ function populateTalents() {
 
 	function connectEle(container, id, ele, row, connection, direction) {
 		console.log(connection, direction)
-		container.append(`<div class="connection" connection="${id}">`);
-		var connectEle = container.children(`[connection="${id}"]`);
-		var relEle = $(`[t_id="${row['connects_to']}"]`);
+		container.append(`<div class="connection" con_from="${id}" con_to="${connection}">`);
+		var connectEle = container.children(`[con_from="${id}"]`);
+		var relEle = $(`[t_id="${connection}"]`);
 		connectEle.addClass(direction);
 
 
