@@ -159,11 +159,11 @@ function populateTalents() {
 			if (desc.includes('{stat}')) {
 				desc = desc.split('{stat}');
 				var stats = row['stat_effected'].split(', ');
-				for (var i = desc.length - 1; i >= 0; i--) {
+				for (var i = desc.length - 1; i > 0; i--) {
 					var statLast = stats.length - 1;
 					var string = `<span class="desc_stat">${stats[statLast]}</span>`;
-					stats = stats.splice(statLast, 1);
-					desc = desc.splice(i, 0, string);
+					stats.splice(statLast, 1);
+					desc.splice(i, 0, string);
 				}
 				desc = desc.join('');
 			};
@@ -185,11 +185,11 @@ function populateTalents() {
 				};
 
 				
-				for (var i = desc.length - 1; i >= 0; i--) {
+				for (var i = desc.length - 1; i > 0; i--) {
 					var effectLast = allEffects.length - 1;
 					var string = allEffects[effectLast];
-					allEffects = allEffects.splice(effectLast, 1);
-					desc = desc.splice(i, 0, string);
+					allEffects.splice(effectLast, 1);
+					desc.splice(i, 0, string);
 				}
 				desc = desc.join('');
 			};
