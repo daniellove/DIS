@@ -158,7 +158,7 @@ function populateTalents() {
 	};
 
 	function connectEle(container, id, ele, row) {
-		if (!row['connects_to']) return
+		if (row['connects_to'] === 'FALSE') return
 
 		container.append(`<div connection="${id}">`);
 		var connectEle = container.children(`[connection="${id}"]`);
@@ -206,7 +206,7 @@ function populateTalents() {
 			console.log(ele.css('top'))
 			console.log(relEle.css('left'))
 			console.log(relEle.outerWidth(true))
-			
+
 			var obj = {
 				left: `calc(${ele.css('left')} + ${ele.outerWidth(true) / 2}px)`,
 				top: `calc(${ele.css('top')} - 1px)`,
