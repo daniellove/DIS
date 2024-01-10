@@ -192,7 +192,7 @@ function populateTalents() {
 			var width = ele.css('left').replace('px', '');
 				width = width - ele.outerWidth(true) / 2;
 				width = width / container.outerWidth(false) * 100;
-				width = width = left;
+				width = width - left;
 
 
 			var obj = {
