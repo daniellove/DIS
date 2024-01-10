@@ -187,7 +187,7 @@ function populateTalents() {
 	};
 
 	function positionEle(row) {
-		var ele = $(`[t_id="${row['t_id']}"]`);
+		var ele = $(`[t_id="${row['talent_id']}"]`);
 		var left = 100 / TALENT_COLS * row['talent_x'];
 		var top = 100 / TALENT_ROWS * row['talent_y'];
 
