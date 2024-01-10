@@ -230,15 +230,13 @@ function populateTalents() {
 				right: `calc(${right}% + 1px)`,
 			}
 
-			console.log(obj)
-
 			return obj;
 		};
 
 		function topObj() {
 
 			var left = +ele.css('left').replace('px', '');
-				left = left / container.outerWidth(true) * 100;
+				left = left / container.width() * 100;
 				left = Math.round(left * 10) / 10
 
 			var top = +relEle.css('top').replace('px', '');
@@ -248,13 +246,13 @@ function populateTalents() {
 
 			var bottom = +ele.css('top').replace('px', '');
 				bottom = bottom - ele.outerHeight(true) / 2;
-				bottom = bottom / container.outerHeight(true) * 100;
+				bottom = bottom / container.height() * 100;
 				bottom = Math.round(bottom * 10) / 10
 
 			var obj = {
 				left: `calc(${left}% - 1px)`,
-				top: top + '%',
-				bottom: bottom + '%',
+				top: `calc(${top}% - 1px)`,
+				bottom: `calc(${bottom}% - 1px)`,
 			}
 
 			return obj;
