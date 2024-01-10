@@ -210,11 +210,25 @@ function populateTalents() {
 
 		function rightObj() {
 
+			var left = +ele.css('left').replace('px', '');
+				left = left + ele.outerWidth(true) / 2;
+				left = left / container.outerWidth(false) * 100;
+				left = Math.round(left * 10) / 10
+
+			var top = +relEle.css('top').replace('px', '');
+				top = top / container.outerHeight(false) * 100;
+				top = Math.round(top * 10) / 10
+
+			var right = +relEle.css('left').replace('px', '');
+				right = right - relEle.outerWidth(true) / 2;
+				right = right / container.outerWidth(false) * 100;
+				right = 100 - right;
+				right = Math.round(right * 10) / 10
+
 			var obj = {
-				left: `calc(${ele.css('left')} + ${ele.outerWidth(true) / 2}px)`,
-				top: `calc(${ele.css('top')} - 1px)`,
-				height: '2px',
-				right: `calc(100% - ${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
+				left: left + '%',
+				top: `calc(${top}% - 1px)`,
+				right: right + '%',
 			}
 
 			return obj;
