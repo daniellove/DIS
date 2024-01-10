@@ -266,7 +266,8 @@ td.vert {border-right: var(--border)}*/
 #create_character,
 #select_character,
 #character_fields,
-#svgContainer {
+/*#svgContainer,*/
+.talent_tree {
 	display: none;
 }
 
