@@ -110,20 +110,6 @@ input[options] {
 	background-size: cover;
 }
 
-/*#int_talents {
-	background: var(--blue);
-}
-
-#dex_talents {
-	background: var(--green);
-}
-
-
-#str_talents {
-	background: var(--red);
-}*/
-
-
 .talent_tree {
 	width: calc(66% - 6rem);
 	height: calc(100% - 4rem);
@@ -132,6 +118,14 @@ input[options] {
 	border: var(--border);
 	margin: 2rem;
 	position: relative;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+
+.talent_tree.active {
+	opacity: 1;
 }
 
 .talent,
@@ -256,9 +250,7 @@ td.vert {border-right: var(--border)}*/
 
 #create_character,
 #select_character,
-#character_fields,
-/*#svgContainer,*/
-.talent_tree {
+#character_fields {
 	display: none;
 }
 

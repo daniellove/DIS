@@ -82,9 +82,9 @@ $(document).on('click', '.typing', function() {
 });
 
 $(document).on('click', '.tri_activator', function() {
-	$('.talent_tree').stop().fadeOut('fast');
+	$('.talent_tree').removeClass('active');
 	var tree = $(this).attr('activates');
-	$(`#${tree}`).stop().fadeIn('fast')
+	$(`#${tree}`).addClass('active');
 
 	return
 })
