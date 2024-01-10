@@ -164,19 +164,20 @@ function populateTalents() {
 
 		if (row['connects_to'] === 'FALSE') return
 		var connections = row['connects_to'].split(', ')
-		for (var connection of connections) connectEle(container, id, ele, row, connection);
+		var directions = row['connection'].split(', ')
+		for (var i of connections) connectEle(container, id, ele, row, connections[i], directions[i]);
 
 		return
 	};
 
-	function connectEle(container, id, ele, row, connection) {
+	function connectEle(container, id, ele, row, connection, direction) {
 		container.append(`<div class="connection" connection="${id}">`);
 		var connectEle = container.children(`[connection="${id}"]`);
 		var relEle = $(`[t_id="${row['connects_to']}"]`);
-		connectEle.addClass(connection);
+		connectEle.addClass(direction);
 
 
-		switch (connection) {
+		switch (direction) {
 			case 'left':
 				var obj = leftObj();
 				break;
