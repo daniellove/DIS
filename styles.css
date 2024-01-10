@@ -117,7 +117,7 @@ input[options] {
 	border-radius: 4px;
 	border: var(--border);
 	margin: 2rem;
-	position: abs;
+	position: absolute;
 	top: 0;
 	right: 0;
 	opacity: 0;
