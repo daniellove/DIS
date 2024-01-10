@@ -107,7 +107,7 @@ input[options] {
 }
 
 #dex_talents {
-	background-image: url('annie.jpg');
+	background-image: url('rogue.jpg');
 }
 
 .talent_tree {
@@ -259,10 +259,6 @@ td.vert {border-right: var(--border)}
 #select_character,
 #character_fields {
 	display: none;
-}
-
-#dex_talents {
-	background: var(--green);
 }
 
 #str_talents {
