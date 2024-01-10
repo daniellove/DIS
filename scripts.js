@@ -203,9 +203,9 @@ function populateTalents() {
 		function topObj() {
 			var obj = {
 				left: `calc(${ele.css('left')} - 1px)`,
-				top: `calc(${relEle.css('top')} + ${relEle.outerheight(true) / 2}px)`,
+				top: `calc(${relEle.css('top')} + ${relEle.outerHeight(true) / 2}px)`,
 				width: '2px',
-				bottom: `calc(${ele.css('top')} - ${ele.outerheight(true) / 2}px)`,
+				bottom: `calc(${ele.css('top')} - ${ele.outerHeight(true) / 2}px)`,
 			}
 
 			return obj;
