@@ -144,7 +144,7 @@ input[options] {
 }
 
 .talent,
-[join_id] {
+.joiner {
 	position: absolute;
 	width: 5%;
     height: 0;
@@ -159,7 +159,7 @@ input[options] {
 	opacity: var(--faded);
 }
 
-[join_id] {
+.joiner {
 	width: 4px;
 	height: 4px;
 	padding: 0;

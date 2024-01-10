@@ -127,7 +127,7 @@ function populateTalents() {
 
 	function rowEle(id, row) {
 		if (id.includes('c')) {
-			var ele = `<div join_id="${id}"></div>`;
+			var ele = `<div class="joiner" t_id="${id}"></div>`;
 		} else {
 			var ele = [
 				`<div class="talent" t_id="${row['talent_id']}" requires="${row['requires']}">`,
@@ -191,7 +191,7 @@ function populateTalents() {
 				left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
 				top: `calc(${relEle.css('top')} - 1px)`,
 				height: '2px',
-				// right: `calc(100% - ${ele.css('left')})`,
+				right: `calc(100% - ${ele.css('left')})`,
 			}
 
 			console.log(obj);
