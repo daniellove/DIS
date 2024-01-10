@@ -1,5 +1,3 @@
-console.log(8)
-
 const DROP_OPTIONS = {
 	race: {
 		Dragonborn: 't_1-1-0',
@@ -115,64 +113,25 @@ function processInput(input) {
 	return
 };
 
-$(function() {
-	$('.talent_tree').each(function() {
-		var container = $(this)
-		container.prepend('<table class="talent_grid"></table>');
-
-		var table = container.children('.talent_grid');
-		for (var i = TALENT_ROWS; i > 0; i--) table.append('<tr></tr>');
-
-		var rows = table.children('tr')
-		for (var i = TALENT_COLS; i > 0; i--) rows.append('<td></td>');
-	});
-
-	// for (var stat in TREE_LINES) {
-	// 	var container = $(`#${stat}_talents .talent_grid`);
-
-	// 	var horz = TREE_LINES[stat]['horz'];
-	// 	for (var data of horz) {
-	// 		var d = data.split(':');
-	// 		var r = d[0] - 1;
-	// 		var row = $(container.children('tr')[+r]);
-	// 		var c = d[1].split('-');
-	// 		for (var i = +c[0]; i < +c[1]; i++) {
-	// 			var cell = $(row.children('td')[i]);
-	// 			cell.addClass('horz');
-	// 		}
-	// 	};
-
-	// 	var vert = TREE_LINES[stat]['vert'];
-	// 	for (var data of vert) {
-	// 		var d = data.split(':');
-	// 		var r = d[0].split('-');
-	// 		var col = d[1] - 1;
-	// 		for (var i = + r[0]; i <= r[1]; i++) {
-	// 			var row = $(container.children('tr')[i]);
-	// 			var cell = $(row.children('td')[col]);
-	// 			cell.addClass('vert');
-	// 		}
-	// 	};
-	// };
-
-});
-
 function populateTalents() {
 	for (var row of TALENT_DATA) {
 		var container = $(`#${row['talent_tree']}_talents`);
-		container.append(rowEle(row));
-		positionEle(row)
+		var id = row['talent_id'];
+		container.append(rowEle(id, row));
+
+		var ele = $(`[t_id="${id}"]`);
+		positionEle(ele, row);
+		connectEle(container, id, ele, row);
 	};
 
 	return
 
-	function rowEle(row) {
-		var t_id = row['talent_id'];
-		if (t_id.includes('c')) {
-			var ele = `<div join_id="${t_id}"></div>`;
+	function rowEle(id, row) {
+		if (id.includes('c')) {
+			var ele = `<div join_id="${id}"></div>`;
 		} else {
 			var ele = [
-				`<div class="talent" t_id="${row['talent_id']}">`,
+				`<div class="talent" t_id="${row['talent_id']}" requires="${row['requires']}">`,
 					`<i class="talent_icon ${row['talent_icon']}"></i>`,
 					`<div class="info">`,
 						`<p class="name">${row['talent_name']}</p>`,
@@ -183,11 +142,9 @@ function populateTalents() {
 		};
 
 		return ele;			
-		
 	};
 
-	function positionEle(row) {
-		var ele = $(`[t_id="${row['talent_id']}"]`);
+	function positionEle(ele, row) {
 		var left = 100 / TALENT_COLS * row['talent_x'];
 		var top = 100 / TALENT_ROWS * row['talent_y'];
 
@@ -197,5 +154,48 @@ function populateTalents() {
 		});
 
 		return
+	};
+
+	function connectEle(container, id, ele, row) {
+		if (!row['connects_to']) return
+
+		container.append(`<div connection="${id}">`);
+		var connectEle = container.children(`[connection="${id}"]`);
+		var relEle = $(`[t_id="${row['connects_to']}"]`);
+
+		switch (row['connection']) {
+			case 'left':
+				connectEle.css(leftObj())
+				break;
+			case 'right':
+				rightObj()
+				break;
+			case 'top':
+				topObj()
+				break;
+		};
+
+		return
+
+		function leftObj() {
+			var obj = {
+				left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
+				top: `calc(${relEle.css('top')} - 1px)`,
+				height: '2px',
+				right: `calc(100% - ${ele.css('left')})`,
+			}
+			return obj;
+		};
+
+		function rightObj() {
+
+			return
+		};
+
+		function topObj() {
+
+			return
+		};
+
 	};
 };

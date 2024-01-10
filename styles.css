@@ -235,6 +235,12 @@ input[options] {
 	opacity: var(--faded);
 }
 
+[connection] {
+	background-color: #FFF;
+	position: absolute;
+	display: block;
+}
+
 /*td {
 	border: 2px solid transparent;
 }
