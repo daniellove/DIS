@@ -77,7 +77,17 @@ $(document).on('click', closeDropOptions);
 
 $(document).on('click', '.typing', function() {
 	console.log('typing');
+
+	return
 });
+
+$(document).on('click', '.tri_activator', function() {
+	$('.talent_tree').stop().fadeOut('fast');
+	var tree = $(this).attr('activates');
+	$(`#${tree}`).stop().fadeIn('fast')
+
+	return
+})
 
 function dropOptions(options) {
 	var eles = ['<div class="drop_options">'];

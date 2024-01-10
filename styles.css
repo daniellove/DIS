@@ -40,28 +40,19 @@ svg {
 
 
 #svg1 {
-/*	fill: red; */
 	fill: var(--red); 
 }
 
 #svg2 {
-/*	fill: blue;*/
 	fill: var(--blue); 
-	transform: rotate(120deg);
-	top: 0;
-/*	left: 50%;*/
-	right: 0;
 }
 
 #svg3 {
-/*	fill: green;*/
 	fill: var(--green); 
-	transform: rotate(240deg);
-/*	left: 25%;*/
-	left: 26.3%;
-/*	bottom: -29.5%;*/
-/*	bottom: -12.5%;*/
-	bottom: -28%;
+}
+
+.tri_activator {
+	cursor: pointer;
 }
 
 #character_fields {
