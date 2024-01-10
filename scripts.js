@@ -241,12 +241,13 @@ function populateTalents() {
 
 			var top = +relEle.css('top').replace('px', '');
 				top = top + relEle.outerHeight(true) / 2;
-				top = top / container.outerHeight(true) * 100;
+				top = top / container.height() * 100;
 				top = Math.round(top * 10) / 10
 
 			var bottom = +ele.css('top').replace('px', '');
 				bottom = bottom - ele.outerHeight(true) / 2;
 				bottom = bottom / container.height() * 100;
+				bottom = 100 - bottom;
 				bottom = Math.round(bottom * 10) / 10
 
 			var obj = {
