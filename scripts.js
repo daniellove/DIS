@@ -183,9 +183,14 @@ function populateTalents() {
 		function leftObj() {
 
 			var left = relEle.css('left').replace('px', '')
+				console.log(left)
 				left = left + relEle.outerWidth(true) / 2
+				console.log(left)
 				left = left / container.outerWidth(false) * 100
+				console.log(left)
 				left = left + '%'
+				console.log(left)
+
 
 			var obj = {
 				// left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
@@ -194,6 +199,8 @@ function populateTalents() {
 				height: '2px',
 				right: `calc(100% - ${ele.css('left')} - ${ele.outerWidth(true) / 2}px)`,
 			}
+
+			console.log(obj);
 
 			return obj;
 		};
@@ -212,11 +219,11 @@ function populateTalents() {
 
 		function topObj() {
 
-			console.log(ele.css('left'))
-			console.log(relEle.css('top'))
-			console.log(relEle.outerHeight(true))
-			console.log(ele.css('top'))
-			console.log(ele.outerHeight(true))
+			// console.log(ele.css('left'))
+			// console.log(relEle.css('top'))
+			// console.log(relEle.outerHeight(true))
+			// console.log(ele.css('top'))
+			// console.log(ele.outerHeight(true))
 
 			var obj = {
 				left: `calc(${ele.css('left')} - 1px)`,
