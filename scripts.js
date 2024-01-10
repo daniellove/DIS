@@ -165,12 +165,13 @@ function populateTalents() {
 		if (row['connects_to'] === 'FALSE') return
 		var connections = row['connects_to'].split(', ')
 		var directions = row['connection'].split(', ')
-		for (var i of connections) connectEle(container, id, ele, row, connections[i], directions[i]);
+		for (var i of connections) {connectEle(container, id, ele, row, connections[i], directions[i]);
 
 		return
 	};
 
 	function connectEle(container, id, ele, row, connection, direction) {
+		console.log(connection, direction)
 		container.append(`<div class="connection" connection="${id}">`);
 		var connectEle = container.children(`[connection="${id}"]`);
 		var relEle = $(`[t_id="${row['connects_to']}"]`);
