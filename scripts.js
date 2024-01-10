@@ -160,9 +160,10 @@ function populateTalents() {
 	function connectEle(container, id, ele, row) {
 		if (row['connects_to'] === 'FALSE') return
 
-		container.append(`<div connection="${id}">`);
+		container.append(`<div class="connection" connection="${id}">`);
 		var connectEle = container.children(`[connection="${id}"]`);
 		var relEle = $(`[t_id="${row['connects_to']}"]`);
+		relEle.addClass(row['connection']);
 
 		switch (row['connection']) {
 			case 'left':
@@ -185,21 +186,23 @@ function populateTalents() {
 			var left = +relEle.css('left').replace('px', '');
 				left = left + relEle.outerWidth(true) / 2;
 				left = left / container.outerWidth(false) * 100;
+				left = Math.round(left * 10) / 10
 
 			var top = +relEle.css('top').replace('px', '');
 				top = top / container.outerHeight(false) * 100;
+				top = Math.round(top * 10) / 10
 
 			var right = +ele.css('left').replace('px', '');
 				right = right - ele.outerWidth(true) / 2;
 				right = right / container.outerWidth(false) * 100;
 				right = 100 - right;
+				right = Math.round(right * 10) / 10
 
 
 			var obj = {
 				// left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
 				left: left + '%',
-				top: `calc(${top}% - 1px)`,
-				height: '2px',
+				top: top + '%',
 				right: right + '%',
 			}
 
