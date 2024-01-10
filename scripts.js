@@ -162,20 +162,21 @@ function populateTalents() {
 			'top': `${top}%`,
 		});
 
-		connectEle(container, id, ele, row);
+		if (row['connects_to'] === 'FALSE') return
+		var connections = row['connects_to'].split(', ')
+		for (var connection of connections) connectEle(container, id, ele, row, connection);
 
 		return
 	};
 
-	function connectEle(container, id, ele, row) {
-		if (row['connects_to'] === 'FALSE') return
-
+	function connectEle(container, id, ele, row, connection) {
 		container.append(`<div class="connection" connection="${id}">`);
 		var connectEle = container.children(`[connection="${id}"]`);
 		var relEle = $(`[t_id="${row['connects_to']}"]`);
-		connectEle.addClass(row['connection']);
+		connectEle.addClass(connection);
 
-		switch (row['connection']) {
+
+		switch (connection) {
 			case 'left':
 				var obj = leftObj();
 				break;
@@ -262,7 +263,7 @@ function populateTalents() {
 
 			var obj = {
 				left: `calc(${left}% - 1px)`,
-				top: `calc(${top}% - 0px)`,
+				top: `calc(${top}% - 1px)`,
 				bottom: `calc(${bottom}% - 1px)`,
 			}
 
