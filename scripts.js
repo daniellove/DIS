@@ -133,6 +133,21 @@ function populateTalents() {
 		positionEle(container, id, ele, row);
 	};
 
+	$(window).on('resize', function() {
+		$('.connection').each(function() {
+			var connector = $(this);
+			var ele = connector.attr('con_from');
+				ele = $(`[t_id="${ele}"]`);
+			var relEle = connector.attr('con_to');
+				relEle = $(`[t_id="${relEle}"]`);
+
+			var container = connector.closest('.talent_tree');
+			positionConnector(container, ele, relEle, connector);
+		});
+
+		return
+	});
+
 	return
 
 	function rowEle(id, row) {
@@ -171,106 +186,109 @@ function populateTalents() {
 	};
 
 	function connectEle(container, id, ele, row, rel_id, dir) {
-		console.log(rel_id, dir)
 		container.append(`<div class="connection" con_from="${id}" con_to="${rel_id}">`);
-		var connectEle = container.children(`[con_from="${id}"][con_to="${rel_id}"]`);
+		var connector = container.children(`[con_from="${id}"][con_to="${rel_id}"]`);
 		var relEle = $(`[t_id="${rel_id}"]`);
-		connectEle.addClass(dir);
+		connector.addClass(dir);
 
-
-		switch (dir) {
-			case 'left':
-				var obj = leftObj();
-				break;
-			case 'right':
-				var obj = rightObj();
-				break;
-			case 'top':
-				var obj = topObj();
-				break;
-		};
-
-		connectEle.css(obj);
+		positionConnector(container, ele, relEle, connector);
 
 		return
-
-		function leftObj() {
-
-			var left = +relEle.css('left').replace('px', '');
-				left = left + relEle.outerWidth(true) / 2;
-				left = left / container.width() * 100;
-				left = Math.round(left * 10) / 10
-
-			var top = +relEle.css('top').replace('px', '');
-				top = top / container.height() * 100;
-				top = Math.round(top * 10) / 10
-
-			var right = +ele.css('left').replace('px', '');
-				right = right - ele.outerWidth(true) / 2;
-				right = right / container.width() * 100;
-				right = 100 - right;
-				right = Math.round(right * 10) / 10
-
-			var obj = {
-				left: `calc(${left}% - 1px)`,
-				top: `calc(${top}% - 1px)`,
-				right: `calc(${right}% - 1px)`,
-			}
-
-			return obj;
-		};
-
-		function rightObj() {
-
-			var left = +ele.css('left').replace('px', '');
-				left = left + ele.outerWidth(true) / 2;
-				left = left / container.width() * 100;
-				left = Math.round(left * 10) / 10
-
-			var top = +ele.css('top').replace('px', '');
-				top = top / container.height() * 100;
-				top = Math.round(top * 10) / 10
-
-			var right = +relEle.css('left').replace('px', '');
-				right = right - relEle.outerWidth(true) / 2;
-				right = right / container.width() * 100;
-				right = 100 - right;
-				right = Math.round(right * 10) / 10
-
-			var obj = {
-				left: `calc(${left}% - 1px)`,
-				top: `calc(${top}% - 1px)`,
-				right: `calc(${right}% + 0px)`,
-			}
-
-			return obj;
-		};
-
-		function topObj() {
-
-			var left = +ele.css('left').replace('px', '');
-				left = left / container.width() * 100;
-				left = Math.round(left * 10) / 10
-
-			var top = +relEle.css('top').replace('px', '');
-				top = top + relEle.outerHeight(true) / 2;
-				top = top / container.height() * 100;
-				top = Math.round(top * 10) / 10
-
-			var bottom = +ele.css('top').replace('px', '');
-				bottom = bottom - ele.outerHeight(true) / 2;
-				bottom = bottom / container.height() * 100;
-				bottom = 100 - bottom;
-				bottom = Math.round(bottom * 10) / 10
-
-			var obj = {
-				left: `calc(${left}% - 1px)`,
-				top: `calc(${top}% - 1px)`,
-				bottom: `calc(${bottom}% - 1px)`,
-			}
-
-			return obj;
-		};
-
 	};
 };
+
+function positionConnector(container, ele, relEle, connector) {
+
+	switch (true) {
+		case connector.hasClass('left'):
+			var obj = leftObj();
+			break;
+		case connector.hasClass('right'):
+			var obj = rightObj();
+			break;
+		case connector.hasClass('top'):
+			var obj = topObj();
+			break;
+	};
+
+	connector.css(obj);
+
+	function leftObj() {
+
+		var left = +relEle.css('left').replace('px', '');
+			left = left + relEle.outerWidth(true) / 2;
+			left = left / container.width() * 100;
+			left = Math.round(left * 10) / 10
+
+		var top = +relEle.css('top').replace('px', '');
+			top = top / container.height() * 100;
+			top = Math.round(top * 10) / 10
+
+		var right = +ele.css('left').replace('px', '');
+			right = right - ele.outerWidth(true) / 2;
+			right = right / container.width() * 100;
+			right = 100 - right;
+			right = Math.round(right * 10) / 10
+
+		var obj = {
+			left: `calc(${left}% - 1px)`,
+			top: `calc(${top}% - 1px)`,
+			right: `calc(${right}% - 1px)`,
+		}
+
+		return obj;
+	};
+
+	function rightObj() {
+
+		var left = +ele.css('left').replace('px', '');
+			left = left + ele.outerWidth(true) / 2;
+			left = left / container.width() * 100;
+			left = Math.round(left * 10) / 10
+
+		var top = +ele.css('top').replace('px', '');
+			top = top / container.height() * 100;
+			top = Math.round(top * 10) / 10
+
+		var right = +relEle.css('left').replace('px', '');
+			right = right - relEle.outerWidth(true) / 2;
+			right = right / container.width() * 100;
+			right = 100 - right;
+			right = Math.round(right * 10) / 10
+
+		var obj = {
+			left: `calc(${left}% - 1px)`,
+			top: `calc(${top}% - 1px)`,
+			right: `calc(${right}% + 0px)`,
+		}
+
+		return obj;
+	};
+
+	function topObj() {
+
+		var left = +ele.css('left').replace('px', '');
+			left = left / container.width() * 100;
+			left = Math.round(left * 10) / 10
+
+		var top = +relEle.css('top').replace('px', '');
+			top = top + relEle.outerHeight(true) / 2;
+			top = top / container.height() * 100;
+			top = Math.round(top * 10) / 10
+
+		var bottom = +ele.css('top').replace('px', '');
+			bottom = bottom - ele.outerHeight(true) / 2;
+			bottom = bottom / container.height() * 100;
+			bottom = 100 - bottom;
+			bottom = Math.round(bottom * 10) / 10
+
+		var obj = {
+			left: `calc(${left}% - 1px)`,
+			top: `calc(${top}% - 1px)`,
+			bottom: `calc(${bottom}% - 1px)`,
+		}
+
+		return obj;
+	};
+
+}
