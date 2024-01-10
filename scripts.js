@@ -184,13 +184,14 @@ function populateTalents() {
 			console.log(`calc(${relEle.css('top')} - 1px)`);
 			console.log('2px');
 			console.log(`calc(100% - ${ele.css('left')})`);
+			console.log(`calc(100% - ${ele.css('left')})`);
 
 
 			var obj = {
 				left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
 				top: `calc(${relEle.css('top')} - 1px)`,
 				height: '2px',
-				right: `calc(100% - ${ele.css('left')})`,
+				// right: `calc(100% - ${ele.css('left')})`,
 			}
 
 			console.log(obj);
