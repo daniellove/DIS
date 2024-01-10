@@ -176,21 +176,20 @@ function populateTalents() {
 				break;
 		};
 
-		console.log(obj)
 		connectEle.css(obj);
 
 		return
 
 		function leftObj() {
 
-			console.log(relEle.css('left'))
-			console.log(relEle.outerWidth(true))
-			console.log(relEle.css('top'))
-			console.log(ele.css('left'))
-			console.log(ele.outerWidth(true))
+			var left = relEle.css('left').replace('px', '')
+				left = left + relEle.outerWidth(true) / 2
+				left = left / container.outerWidth(false) * 100
+				left = left + '%'
 
 			var obj = {
-				left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
+				// left: `calc(${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
+				left: left,
 				top: `calc(${relEle.css('top')} - 1px)`,
 				height: '2px',
 				right: `calc(100% - ${ele.css('left')} - ${ele.outerWidth(true) / 2}px)`,
@@ -201,17 +200,11 @@ function populateTalents() {
 
 		function rightObj() {
 
-			console.log(ele.css('left'))
-			console.log(ele.outerWidth(true))
-			console.log(ele.css('top'))
-			console.log(relEle.css('left'))
-			console.log(relEle.outerWidth(true))
-
 			var obj = {
 				left: `calc(${ele.css('left')} + ${ele.outerWidth(true) / 2}px)`,
 				top: `calc(${ele.css('top')} - 1px)`,
 				height: '2px',
-				right: `calc(100% - ${relEle.css('left')} - ${relEle.outerWidth(true) / 2}px)`,
+				right: `calc(100% - ${relEle.css('left')} + ${relEle.outerWidth(true) / 2}px)`,
 			}
 
 			return obj;
@@ -229,8 +222,10 @@ function populateTalents() {
 				left: `calc(${ele.css('left')} - 1px)`,
 				top: `calc(${relEle.css('top')} + ${relEle.outerHeight(true) / 2}px)`,
 				width: '2px',
-				bottom: `calc(${ele.css('top')} - ${ele.outerHeight(true) / 2}px)`,
+				height: `calc(${ele.css('top')} - ${ele.outerHeight(true) / 2}px)`,
 			}
+
+			console.log(obj);
 
 			return obj;
 		};
