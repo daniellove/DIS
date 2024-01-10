@@ -227,7 +227,7 @@ function populateTalents() {
 			var obj = {
 				left: `calc(${left}% - 1px)`,
 				top: `calc(${top}% - 1px)`,
-				right: `calc(${right}% + 1px)`,
+				right: `calc(${right}% + 0px)`,
 			}
 
 			return obj;
