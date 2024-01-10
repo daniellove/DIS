@@ -174,7 +174,7 @@ function populateTalents() {
 			var ele = [
 				`<div class="talent" t_id="${row['talent_id']}">`,
 					`<i class="talent_icon ${row['talent_icon']}"></i>`,
-					`<div class="info">`
+					`<div class="info">`,
 						`<p class="name">${row['talent_name']}</p>`,
 						`<p class="desc">${row['talent_description']}</p>`,
 					`</div>`,
