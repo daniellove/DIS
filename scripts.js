@@ -195,6 +195,7 @@ function populateTalents() {
 					} else allEffects[j] = allEffects[j] + ' / ' + effectEle;
 				};
 			};
+			for (var i in allEffects) allEffects[i] = `( ${allEffects[i]} )`;
 			for (var i = desc.length - 1; i > 0; i--) {
 				var effectLast = allEffects.length - 1;
 				var string = allEffects[effectLast];
