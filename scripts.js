@@ -165,7 +165,7 @@ function populateTalents() {
 		if (row['connects_to'] === 'FALSE') return
 		var connections = row['connects_to'].split(', ')
 		var directions = row['connection'].split(', ')
-		for (var i of connections) connectEle(container, id, ele, row, connections[i], directions[i]);
+		for (var i in connections) connectEle(container, id, ele, row, connections[i], directions[i]);
 
 		return
 	};
