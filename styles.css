@@ -104,10 +104,12 @@ input[options] {
 
 #int_talents {
 	background-image: url('annie.jpg');
+	background-position: center;
 }
 
 #dex_talents {
 	background-image: url('rogue.jpg');
+	background-position: top;
 }
 
 .talent_tree {
@@ -126,7 +128,6 @@ input[options] {
 	-moz-transition: opacity 0.35s ease-in-out;
 	transition: opacity 0.35s ease-in-out;
 	background-repeat: no-repeat;
-	background-position: center;
 	background-size: cover;
 }
 

@@ -261,9 +261,9 @@ function populateTalents() {
 				bottom = Math.round(bottom * 10) / 10
 
 			var obj = {
-				left: `calc(${left}% - 3px)`,
+				left: `calc(${left}% - 1px)`,
 				top: `calc(${top}% - 0px)`,
-				bottom: `calc(${bottom}% + 1px)`,
+				bottom: `calc(${bottom}% - 1px)`,
 			}
 
 			return obj;
