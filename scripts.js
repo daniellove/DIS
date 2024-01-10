@@ -155,6 +155,7 @@ function populateTalents() {
 			var ele = `<div class="joiner" t_id="${id}"></div>`;
 		} else {
 			var desc = row['talent_description'];
+			console.log(desc)
 			if (desc.includes('{stat}')) {
 				desc = desc.split('{stat}');
 				var stats = row['stat_effected'].split(', ');
@@ -167,12 +168,14 @@ function populateTalents() {
 				desc = desc.join('');
 			};
 
+			console.log(desc)
+
 			if (desc.includes('{effect}')) {
 				desc = desc.split('{effect}');
 
 				var allEffects = [];
 				for (var i = 1; i <= 3; i++) {
-					var effects = row[`effect_${i}`].split(', ');
+					var effects = row[`effect_${i}`].toString().split(', ');
 					for (var j in effects) {
 						var effectEle = `<span class="effects" tier="${i}">${effects[j]}</span>`;
 						if (typeof allEffects[j] == 'undefined') {
@@ -190,6 +193,8 @@ function populateTalents() {
 				}
 				desc = desc.join('');
 			};
+
+			console.log(desc)
 
 			var ele = [
 				`<div class="talent" t_id="${row['talent_id']}" requires="${row['requires']}">`,
