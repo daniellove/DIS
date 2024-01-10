@@ -169,7 +169,7 @@ function populateTalents() {
 				var obj = leftObj();
 				break;
 			case 'right':
-				var obj = rightObj();
+				// var obj = rightObj();
 				break;
 			case 'top':
 				// var obj = topObj();
@@ -192,14 +192,14 @@ function populateTalents() {
 		};
 
 		function rightObj() {
-			var obj = {
-				left: `calc(${ele.css('left')} + ${ele.outerWidth(true) / 2}px)`,
-				top: `calc(${ele.css('top')} - 1px)`,
-				height: '2px',
-				right: `calc(100% - ${relEle.css('left')} - ${relEle.outerWidth(true) / 2}px)`,
-			}
+			// var obj = {
+			// 	left: `calc(${ele.css('left')} + ${ele.outerWidth(true) / 2}px)`,
+			// 	top: `calc(${ele.css('top')} - 1px)`,
+			// 	height: '2px',
+			// 	right: `calc(100% - ${relEle.css('left')} - ${relEle.outerWidth(true) / 2}px)`,
+			// }
 
-			return obj;
+			// return obj;
 		};
 
 		function topObj() {
