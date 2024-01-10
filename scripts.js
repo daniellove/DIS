@@ -199,7 +199,7 @@ function populateTalents() {
 				right = Math.round(right * 10) / 10
 
 			var obj = {
-				left: `calc(${left}% + 1px)`,
+				left: `calc(${left}% - 1px)`,
 				top: `calc(${top}% - 1px)`,
 				right: `calc(${right}% - 1px)`,
 			}
@@ -210,8 +210,8 @@ function populateTalents() {
 		function rightObj() {
 
 			var left = +ele.css('left').replace('px', '');
-				left = left + ele.outerWidth(true) / 2;
-				left = left / container.outerWidth(true) * 100;
+				left = left + ele.outerWidth(false) / 2;
+				left = left / container.width() * 100;
 				left = Math.round(left * 10) / 10
 
 			var top = +relEle.css('top').replace('px', '');
@@ -219,15 +219,15 @@ function populateTalents() {
 				top = Math.round(top * 10) / 10
 
 			var right = +relEle.css('left').replace('px', '');
-				right = right - relEle.outerWidth(true) / 2;
-				right = right / container.outerWidth(true) * 100;
+				right = right - relEle.outerWidth(false) / 2;
+				right = right / container.width() * 100;
 				right = 100 - right;
 				right = Math.round(right * 10) / 10
 
 			var obj = {
-				left: left + '%',
+				left: `calc(${left}% - 1px)`,
 				top: `calc(${top}% - 1px)`,
-				right: right + '%',
+				right: `calc(${right}% - 1px)`,
 			}
 
 			return obj;
