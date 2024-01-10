@@ -172,7 +172,7 @@ function populateTalents() {
 				var obj = rightObj();
 				break;
 			case 'top':
-				var obj = topObj();
+				// var obj = topObj();
 				break;
 		};
 
@@ -203,14 +203,14 @@ function populateTalents() {
 		};
 
 		function topObj() {
-			var obj = {
-				left: `calc(${ele.css('left')} - 1px)`,
-				top: `calc(${relEle.css('top')} + ${relEle.outerHeight(true) / 2}px)`,
-				width: '2px',
-				bottom: `calc(${ele.css('top')} - ${ele.outerHeight(true) / 2}px)`,
-			}
+			// var obj = {
+			// 	left: `calc(${ele.css('left')} - 1px)`,
+			// 	top: `calc(${relEle.css('top')} + ${relEle.outerHeight(true) / 2}px)`,
+			// 	width: '2px',
+			// 	bottom: `calc(${ele.css('top')} - ${ele.outerHeight(true) / 2}px)`,
+			// }
 
-			return obj;
+			// return obj;
 		};
 
 	};
