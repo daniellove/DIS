@@ -104,9 +104,10 @@ input[options] {
 
 #int_talents {
 	background-image: url('annie.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+}
+
+#dex_talents {
+	background-image: url('annie.jpg');
 }
 
 .talent_tree {
@@ -124,6 +125,9 @@ input[options] {
 	-webkit-transition: opacity 0.35s ease-in-out;
 	-moz-transition: opacity 0.35s ease-in-out;
 	transition: opacity 0.35s ease-in-out;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 .talent_tree.active {
