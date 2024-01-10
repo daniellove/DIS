@@ -247,6 +247,11 @@ input[options] {
 	height: 3px;
 }
 
+
+.connection.top {
+	width: 3px;
+}
+
 /*td {
 	border: 2px solid transparent;
 }
