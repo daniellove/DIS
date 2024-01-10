@@ -154,12 +154,49 @@ function populateTalents() {
 		if (id.includes('c')) {
 			var ele = `<div class="joiner" t_id="${id}"></div>`;
 		} else {
+			var desc = row['talent_description'];
+			if (desc.includes('{stat}')) {
+				desc = desc.split('{stat}');
+				var stats = row['stat_effected'].split(', ');
+				for (var i = desc.length - 1; i >= 0; i--) {
+					var statLast = stats.length - 1;
+					var string = `<span class="desc_stat">${stats[statLast]}</span>`;
+					stats = stats.splice(statLast, 1);
+					desc = desc.splice(i, 0, string);
+				}
+				desc = desc.join('');
+			};
+
+			if (desc.includes('{effect}')) {
+				desc = desc.split('{effect}');
+
+				var allEffects = [];
+				for (var i = 1; i <= 3; i++) {
+					var effects = row[`effect_${i}`].split(', ');
+					for (var j in effects) {
+						var effectEle = `<span class="effects" tier="${i}">${effects[j]}</span>`;
+						if (typeof allEffects[j] == 'undefined') {
+							allEffects[j] = effectEle
+						} else allEffects[j] = allEffects[j] + ' / ' + effectEle;
+					};
+				};
+
+				
+				for (var i = desc.length - 1; i >= 0; i--) {
+					var effectLast = allEffects.length - 1;
+					var string = allEffects[effectLast];
+					allEffects = allEffects.splice(effectLast, 1);
+					desc = desc.splice(i, 0, string);
+				}
+				desc = desc.join('');
+			};
+
 			var ele = [
 				`<div class="talent" t_id="${row['talent_id']}" requires="${row['requires']}">`,
 					`<i class="talent_icon ${row['talent_icon']}"></i>`,
 					`<div class="info">`,
 						`<p class="name">${row['talent_name']}</p>`,
-						`<p class="desc">${row['talent_description']}</p>`,
+						`<p class="desc">${desc}</p>`,
 					`</div>`,
 				`</div>`,
 			].join('\n');
