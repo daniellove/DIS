@@ -184,7 +184,7 @@ function populateTalents() {
 		function leftObj() {
 
 			var left = +relEle.css('left').replace('px', '');
-				left = left + relEle.outerWidth(false) / 2;
+				left = left + relEle.outerWidth(true) / 2;
 				left = left / container.width() * 100;
 				left = Math.round(left * 10) / 10
 
@@ -193,7 +193,7 @@ function populateTalents() {
 				top = Math.round(top * 10) / 10
 
 			var right = +ele.css('left').replace('px', '');
-				right = right - ele.outerWidth(false) / 2;
+				right = right - ele.outerWidth(true) / 2;
 				right = right / container.width() * 100;
 				right = 100 - right;
 				right = Math.round(right * 10) / 10
@@ -211,7 +211,7 @@ function populateTalents() {
 
 			var left = +ele.css('left').replace('px', '');
 			console.log(left)
-				left = left + ele.outerWidth(false) / 2;
+				left = left + ele.outerWidth(true) / 2;
 			console.log(left)
 				left = left / container.width() * 100;
 			console.log(left)
@@ -220,14 +220,14 @@ function populateTalents() {
 
 			var top = +ele.css('top').replace('px', '');
 			console.log(top)
-				top = top / container.outerHeight(true) * 100;
+				top = top / container.height() * 100;
 			console.log(top)
 				top = Math.round(top * 10) / 10
 			console.log(top)
 
 			var right = +relEle.css('left').replace('px', '');
 			console.log(right)
-				right = right - relEle.outerWidth(false) / 2;
+				right = right - relEle.outerWidth(true) / 2;
 			console.log(right)
 				right = right / container.width() * 100;
 			console.log(right)
