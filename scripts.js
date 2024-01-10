@@ -120,8 +120,7 @@ function populateTalents() {
 		container.append(rowEle(id, row));
 
 		var ele = $(`[t_id="${id}"]`);
-		positionEle(ele, row);
-		connectEle(container, id, ele, row);
+		positionEle(container, id, ele, row);
 	};
 
 	return
@@ -144,7 +143,7 @@ function populateTalents() {
 		return ele;			
 	};
 
-	function positionEle(ele, row) {
+	function positionEle(container, id, ele, row) {
 		var left = 100 / TALENT_COLS * row['talent_x'];
 		var top = 100 / TALENT_ROWS * row['talent_y'];
 
@@ -152,6 +151,8 @@ function populateTalents() {
 			'left':  `${left}%`,
 			'top': `${top}%`,
 		});
+
+		connectEle(container, id, ele, row);
 
 		return
 	};
