@@ -112,6 +112,11 @@ input[options] {
 	background-position: top;
 }
 
+#str_talents {
+	background-image: url('tank.jpg');
+	background-position: top;
+}
+
 .talent_tree {
 	width: calc(66% - 6rem);
 	height: calc(100% - 4rem);
@@ -222,6 +227,18 @@ input[options] {
 	display: block;
 }
 
+.talent .info .stat {
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+.talent[level="1"] .info .effects[tier="1"],
+.talent[level="2"] .info .effects[tier="2"],
+.talent[level="3"] .info .effects[tier="3"] {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
 .talent_grid {
 	border-collapse: collapse;
 	width: 100%;
@@ -261,16 +278,3 @@ td.vert {border-right: var(--border)}
 #character_fields {
 	display: none;
 }
-
-#str_talents {
-	background: var(--red);
-}
-
-/*#int_talents {
-	background: var(--blue);
-}
-
-
-
-
-*/
