@@ -172,6 +172,7 @@ function populateTalents() {
 
 	function processDescription(row) {
 		var desc = row['talent_description'];
+		console.log(row)
 		if (desc.includes('{stat}')) {
 			desc = desc.split('{stat}');
 			var stats = row['stat_effected'].split(', ');
