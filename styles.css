@@ -232,6 +232,10 @@ input[options] {
 	text-decoration: underline;
 }
 
+.effects {
+	white-space: nowrap;
+}
+
 .talent[level="1"] .info .effects[tier="1"],
 .talent[level="2"] .info .effects[tier="2"],
 .talent[level="3"] .info .effects[tier="3"] {
