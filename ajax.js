@@ -2,7 +2,7 @@ const API_KEY = 'YD7XPP6efuRAuajXCZMkk3bBtWyqcHNCvvuAlCGGmWYxQI5gFqw-7FtbdPU';
 const SHEET_ID = '13cAT4h0YwbZ4s6nQBrU9FUUt-nQjaU9iEAln7GVb5zM';
 const CHAR_URL = 'https://api.sheetson.com/v2/sheets/Characters';
 const LEVEL_URL = 'https://api.sheetson.com/v2/sheets/Levels';
-const TALENT_URL = 'https://api.sheetson.com/v2/sheets/Talents_0.8';
+const TALENT_URL = 'https://api.sheetson.com/v2/sheets/Talents_0.9';
 const HEADERS = {
 	'Authorization': `Bearer ${API_KEY}`,
     'X-Spreadsheet-Id': SHEET_ID,
