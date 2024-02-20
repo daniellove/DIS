@@ -89,3 +89,9 @@ $(document).on('click', '#create_character', function() {
 
 
 });
+
+$(function() {
+	$('.clicker[default]').each(function() {
+		$(this).text($(this).attr('default'));
+	});
+});
