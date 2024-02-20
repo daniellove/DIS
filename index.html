@@ -20,7 +20,7 @@
 		<i class="fa-sharp fa-solid fa-person-from-portal"></i>
 		<span>Select Character</span>
 	</div>
-	<table id="character_info" class="hidden">
+	<table id="character_info">
 		<tr id="init_field" class="dualField">
 			<td>Name</td>
 			<td id="charName"><input placeholder="Give me a name"></td>
@@ -54,18 +54,18 @@
 			<td>Armor type</td>
 			<td id="armor_type" class="storage drop" default="0">
 				<span class="selected"></span>
-				<div class="drop_options">
+				<dt class="drop_options">
 					<span bg="int" option="1">Light</span>
 					<span bg="dex" option="2">Medium</span>
 					<span bg="str" option="3">Heavy</span>
-				</div>
+				</dt>
 			</td>
 		</tr>
 		<tr class="dualField">
 			<td>Fighting type</td>
 			<td id="fight_type" class="storage drop" default="0">
 				<span class="selected"></span>
-				<div class="drop_options">
+				<dt class="drop_options">
 					<span bg="int" option="1" class="activator" activates="spell_field">Spellcasting</span>
 
 					<span bg="dex" option="2" class="activator" activates="phys_field">Melee - 1H</span>
@@ -76,7 +76,7 @@
 					<span bg="str" option="6" class="activator" activates="phys_field">Melee - 2H</span>
 					<span bg="str" option="7" class="activator" activates="phys_field">Defensive - Heavy</span>
 					<span bg="str" option="8" class="activator" activates="phys_field">Ranged - Heavy</span>
-				</div>
+				</dt>
 			</td>
 		</tr>
 
@@ -112,11 +112,11 @@
 			<td>Spell type</td>
 			<td id="spell_type" class="storage drop" default="0">
 				<span class="selected"></span>
-				<div class="drop_options">
+				<dt class="drop_options">
 					<span bg="int" option="1" class="activator" activates="touch_field">Touch spell</span>
 					<span bg="int" option="2" class="activator" activates="ranged_field">Ranged spell</span>
 					<span bg="int" option="3" class="activator" activates="area_field">Area spell</span>
-				</div>
+				</dt>
 			</td>
 		</tr>
 		<tr class="quadField spell_field">
@@ -159,9 +159,12 @@
 
 		<tr class="dualField">
 			<td>Race 1</td>
+			<td>Race 2</td>
+		</tr>
+		<tr class="dualField">
 			<td id="race_1" class="storage drop" default="0">
-				<span class="selected">Race 1</span>
-				<div class="drop_options">
+				<span class="selected"></span>
+				<dt class="drop_options">
 					<span class="str" type="1" passive="t_6-1-0">Dwarf</span>
 					<span class="str" type="2" passive="t_6-1-1">Tortle</span>
 					<span class="str" type="3" passive="t_6-1-2">Lizardfolk</span>
@@ -182,12 +185,11 @@
 					<span class="int" type="16" passive="t_3-2-0">Gnome</span>
 					<span class="int" type="17" passive="t_3-2-1">Dragonborn</span>
 					<span class="int" type="18" passive="t_3-2-2">Owlin</span>
-				</div>
+				</dt>
 			</td>
-			<td>Race 2</td>
 			<td id="race_2" class="storage drop" default="0">
 				<span class="selected"></span>
-				<div class="drop_options">
+				<dt class="drop_options">
 					<span class="str" type="1" passive="t_6-1-0">Dwarf</span>
 					<span class="str" type="2" passive="t_6-1-1">Tortle</span>
 					<span class="str" type="3" passive="t_6-1-2">Lizardfolk</span>
@@ -208,12 +210,12 @@
 					<span class="int" type="16" passive="t_3-2-0">Gnome</span>
 					<span class="int" type="17" passive="t_3-2-1">Dragonborn</span>
 					<span class="int" type="18" passive="t_3-2-2">Owlin</span>
-				</div>
+				</dt>
 			</td>
 		</tr>
 	</table>
 
-	<div id="character_fields">
+	<!-- <div id="character_fields">
 		<div class="character_field">
 			<input id="character_name" class="typing" type="text" placeholder="My character" />
 			<i class="talent_icon fa-solid fa-pen-to-square"></i>
@@ -238,7 +240,7 @@
 			<input id="w_type" class="dropdown" options="class" readonly />
 			<i class="talent_icon fa-solid fa-chevron-down"></i>
 		</div>
-	</div>
+	</div> -->
 	<div id="talents">
 		<div id="int_talents" class="talent_tree"></div>
 		<div id="dex_talents" class="talent_tree"></div>
