@@ -20,39 +20,40 @@
 		<i class="fa-sharp fa-solid fa-person-from-portal"></i>
 		<span>Select Character</span>
 	</div>
-	<table id="character_info">
-		<tr class="dualField">
+	<table id="character_info" class="hidden">
+		<tr id="init_field" class="dualField">
 			<td>Name</td>
-			<td id="character_name" class="storage input">Placeholder</td>
+			<td id="charName"><input placeholder="Give me a name"></td>
+			<td id="character_name" class="storage input" default="noname"></td>
 		</tr>
-		<tr class="quadField">
-			<td>Level</td>
-			<td id="character_level" class="storage clicker">3</td>
+		<tr class="dualField">
 			<td>Level cost</td>
-			<td id="level_cost" class="auto">0</td>
+			<td id="level_cost" class="auto"></td>
 		</tr>
 		<tr class="triField">
 			<td>Mitigation</td>
-			<td id="mitigation" class="auto">0</td>
-			<td id="mitigation_temp" class="storage clicker">+0</td>
+			<td id="mitigation" class="auto"></td>
+			<td id="mitigation_temp" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField">
 			<td>Hit points</td>
-			<td id="hp_current" class="storage clicker" max="0">0</td>
-			<td id="hp_temp" class="storage clicker">+0</td>
+			<td id="hp_current" class="storage clicker" default="30" max="30"></td>
+			<td id="hp_temp" class="storage clicker" default="0"></td>
 		</tr>
 		<tr id="deathField">
-			<tr><td id="death_saves" class="storage clicker"></td></tr>
+			<tr>
+				<td id="death_saves" class="storage clicker" default="false"></td>
+			</tr>
 		</tr>
 		<tr class="triField">
 			<td>Move speed</td>
 			<td id="move_speed" class="auto"></td>
-			<td id="ms_temp" class="storage clicker">+0</td>
+			<td id="ms_temp" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="dualField">
 			<td>Armor type</td>
-			<td id="armor_type" class="storage drop">
-				<span class="selected">Select one</span>
+			<td id="armor_type" class="storage drop" default="0">
+				<span class="selected"></span>
 				<div class="drop_options">
 					<span bg="int" option="1">Light</span>
 					<span bg="dex" option="2">Medium</span>
@@ -62,8 +63,8 @@
 		</tr>
 		<tr class="dualField">
 			<td>Fighting type</td>
-			<td id="fight_type" class="storage drop">
-				<span class="selected">Select one</span>
+			<td id="fight_type" class="storage drop" default="0">
+				<span class="selected"></span>
 				<div class="drop_options">
 					<span bg="int" option="1" class="activator" activates="spell_field">Spellcasting</span>
 
@@ -81,36 +82,36 @@
 
 		<tr class="triField phys_field">
 			<td>Hit</td>
-			<td id="phys_hit" class="auto" d20="1" d4="0">0</td>
-			<td id="bonus_phys_hit" class="storage clicker">+0</td>
+			<td id="phys_hit" class="auto" d20="1" d4="0"></td>
+			<td id="bonus_phys_hit" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField phys_field">
 			<td>Damage</td>
-			<td id="phys_damage" class="auto" d4="0" d6="0" d8="0" d10="0" d12="0">0</td>
-			<td id="bonus_phys_damage" class="storage clicker">+0</td>
+			<td id="phys_damage" class="auto" d4="0" d6="0" d8="0" d10="0" d12="0"></td>
+			<td id="bonus_phys_damage" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField phys_field">
 			<td>Range</td>
-			<td id="phys_range" class="auto">0</td>
-			<td id="bonus_phys_range" class="storage clicker">+0</td>
+			<td id="phys_range" class="auto"></td>
+			<td id="bonus_phys_range" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="quadField phys_field">
 			<td>Targets cleaved</td>
-			<td id="cleave_targets" class="auto">0</td>
+			<td id="cleave_targets" class="auto"></td>
 			<td>Cleave damage</td>
-			<td id="cleave_damage" class="auto">0</td>
+			<td id="cleave_damage" class="auto"></td>
 		</tr>
 		<tr class="quadField phys_field">
 			<td>Multistrikes</td>
-			<td id="multistrikes" class="auto">0</td>
+			<td id="multistrikes" class="auto"></td>
 			<td>Lifesteal</td>
-			<td id="lifesteal" class="auto">0</td>
+			<td id="lifesteal" class="auto"></td>
 		</tr>
 
 		<tr class="dualField spell_field">
 			<td>Spell type</td>
-			<td id="spell_type" class="storage drop">
-				<span class="selected">Select one</span>
+			<td id="spell_type" class="storage drop" default="0">
+				<span class="selected"></span>
 				<div class="drop_options">
 					<span bg="int" option="1" class="activator" activates="touch_field">Touch spell</span>
 					<span bg="int" option="2" class="activator" activates="ranged_field">Ranged spell</span>
@@ -120,45 +121,45 @@
 		</tr>
 		<tr class="quadField spell_field">
 			<td>Marks</td>
-			<td id="spell_marks" class="auto">0</td>
+			<td id="spell_marks" class="auto"></td>
 			<td>Spell range</td>
-			<td id="spell_range" class="auto">0</td>
+			<td id="spell_range" class="auto"></td>
 		</tr>
 		
 		<tr class="triField ranged_field">
 			<td>Ranged hit</td>
-			<td id="spell_hit" class="auto" d20="1" d4="0">0</td>
-			<td id="bonus_spell_hit" class="storage clicker">+0</td>
+			<td id="spell_hit" class="auto" d20="1" d4="0"></td>
+			<td id="bonus_spell_hit" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField touch_field area_field">
 			<td>Force</td>
-			<td id="spell_force" class="auto">0</td>
-			<td id="bonus_spell_force" class="storage clicker">+0</td>
+			<td id="spell_force" class="auto"></td>
+			<td id="bonus_spell_force" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField touch_field">
 			<td>Spell damage</td>
-			<td id="touch_damage" class="auto" d4="0" d8="0">0</td>
-			<td id="bonus_touch_damage" class="storage clicker">+0</td>
+			<td id="touch_damage" class="auto" d4="0" d8="0"></td>
+			<td id="bonus_touch_damage" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField ranged_field">
 			<td>Spell damage</td>
-			<td id="spell_damage" class="auto" d4="0" d8="0">0</td>
-			<td id="bonus_spell_damage" class="storage clicker">+0</td>
+			<td id="spell_damage" class="auto" d4="0" d8="0"></td>
+			<td id="bonus_spell_damage" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField area_field">
 			<td>Spell damage</td>
-			<td id="area_damage" class="auto" d4="0" d8="0">0</td>
-			<td id="bonus_area_damage" class="storage clicker">+0</td>
+			<td id="area_damage" class="auto" d4="0" d8="0"></td>
+			<td id="bonus_area_damage" class="storage clicker" default="0"></td>
 		</tr>
 		<tr class="triField area_field">
 			<td>Spell area</td>
-			<td id="spell_area" class="auto">0</td>
-			<td id="bonus_spell_area" class="storage clicker">+0</td>
+			<td id="spell_area" class="auto"></td>
+			<td id="bonus_spell_area" class="storage clicker" default="0"></td>
 		</tr>
 
 		<tr class="dualField">
 			<td>Race 1</td>
-			<td id="race_1" class="storage drop">
+			<td id="race_1" class="storage drop" default="0">
 				<span class="selected">Race 1</span>
 				<div class="drop_options">
 					<span class="str" type="1" passive="t_6-1-0">Dwarf</span>
@@ -184,8 +185,8 @@
 				</div>
 			</td>
 			<td>Race 2</td>
-			<td id="race_2" class="storage drop">
-				<span class="selected">Select one</span>
+			<td id="race_2" class="storage drop" default="0">
+				<span class="selected"></span>
 				<div class="drop_options">
 					<span class="str" type="1" passive="t_6-1-0">Dwarf</span>
 					<span class="str" type="2" passive="t_6-1-1">Tortle</span>
@@ -239,9 +240,9 @@
 		</div>
 	</div>
 	<div id="talents">
-		<div id="str_talents" class="talent_tree"></div>
 		<div id="int_talents" class="talent_tree"></div>
 		<div id="dex_talents" class="talent_tree"></div>
+		<div id="str_talents" class="talent_tree"></div>
 	</div>
 	<div id="svgContainer">
 		<svg id="svg" data-name="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 260">

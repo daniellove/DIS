@@ -361,11 +361,13 @@ td.vert {border-right: var(--border)}*/
 	display: none;
 }
 
+#character_info:not(.showing) {
+	display: none;
+}
+
 
 /* TEMP STYLES */
 
-#create_character,
-#character_info,
 #select_character,
 #character_fields {
 	display: none;

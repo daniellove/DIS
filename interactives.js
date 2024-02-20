@@ -79,3 +79,10 @@ $(document).on('click', '.talent', function(e) {
 
 	return;
 });
+
+// Character creation
+
+$('#create_character').on('click', function() {
+	$('#character_info').addClass('showing');
+	
+});
