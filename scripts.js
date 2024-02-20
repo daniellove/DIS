@@ -1,51 +1,9 @@
-const DROP_OPTIONS = {
-	race: {
-		Dragonborn: 't_1-1-0',
-		Gnome: 't_1-1-0',
-		Owlin: 't_1-1-0',
-
-		Elf: 't_1-1-0',
-		Halfling: 't_1-1-0',
-		Human: 't_1-1-0',
-
-		Dwarf: 't_1-1-0',
-		Giant: 't_1-1-0',
-		Orc: 't_1-1-0',
-	},
-	class: {
-		Enchanted: '1',
-		Agile: '2',
-		Heavy: '3',
-	}
-};
-
-const TREE_LINES = {
-	str: {
-		horz: [],
-		vert: [],
-	
-	},
-	dex: {
-		horz: [],
-		vert: [],
-	
-	},
-	int: {
-		horz: [
-			'12:6-22', // sorcery tree
-			'12:38-54', // curses tree
-		],
-		vert: [
-			'7-9:14', '12-18:6', '14-18:14', '12-18:22', // sorcery tree
-			'7-9:46', '12-18:38', '14-18:46', '12-18:54', // curses tree
-			'31-39:10', '31-45:14', // defences tree
-			'31-39:46', '31-45:50', // defences tree
-		],
-	},
-};
-
 const TALENT_ROWS = 50;
 const TALENT_COLS = 60;
+
+function updateCharacter(col, data) {
+	return;
+}
 
 $(document).on('click', '.dropdown', function(event) {
 	event.stopPropagation();

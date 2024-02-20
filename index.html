@@ -9,6 +9,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="ajax.js"></script>
 	<script src="scripts.js"></script>
+	<script src="interactives.js"></script>
 </head>
 <body>
 	<div id="create_character">
@@ -19,6 +20,198 @@
 		<i class="fa-sharp fa-solid fa-person-from-portal"></i>
 		<span>Select Character</span>
 	</div>
+	<table id="character info">
+		<tr class="dualField">
+			<td>Name</td>
+			<td id="character_name" class="storage input">Placeholder</td>
+		</tr>
+		<tr class="quadField">
+			<td>Level</td>
+			<td id="character_level" class="storage clicker">0</td>
+			<td>Level cost</td>
+			<td id="level_cost" class="auto">0</td>
+		</tr>
+		<tr class="triField">
+			<td>Mitigation</td>
+			<td id="mitigation" class="auto">0</td>
+			<td id="mitigation_temp" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField">
+			<td>Hit points</td>
+			<td id="hp_current" class="storage clicker" max="0">0</td>
+			<td id="hp_temp" class="storage clicker">+0</td>
+		</tr>
+		<tr id="deathField">
+			<tr><td id="death_saves" class="storage clicker"></td></tr>
+		</tr>
+		<tr class="triField">
+			<td>Move speed</td>
+			<td id="move_speed" class="auto"></td>
+			<td id="ms_temp" class="storage clicker">+0</td>
+		</tr>
+		<tr class="dualField">
+			<td>Armor type</td>
+			<td id="armor_type" class="storage drop">
+				<span class="selected">Select one</span>
+				<div class="drop_options">
+					<span bg="int" option="1">Light</span>
+					<span bg="dex" option="2">Medium</span>
+					<span bg="str" option="3">Heavy</span>
+				</div>
+			</td>
+		</tr>
+		<tr class="dualField">
+			<td>Fighting type</td>
+			<td id="fight_type" class="storage drop">
+				<span class="selected">Select one</span>
+				<div class="drop_options">
+					<span bg="int" option="1" class="activator" activates="spell_field">Spellcasting</span>
+
+					<span bg="dex" option="2" class="activator" activates="phys_field">Melee - 1H</span>
+					<span bg="dex" option="3" class="activator" activates="phys_field">Melee - Dual</span>
+					<span bg="dex" option="4" class="activator" activates="phys_field">Defensive - Medium</span>
+					<span bg="dex" option="5" class="activator" activates="phys_field">Ranged - Medium</span>
+					
+					<span bg="str" option="6" class="activator" activates="phys_field">Melee - 2H</span>
+					<span bg="str" option="7" class="activator" activates="phys_field">Defensive - Heavy</span>
+					<span bg="str" option="8" class="activator" activates="phys_field">Ranged - Heavy</span>
+				</div>
+			</td>
+		</tr>
+
+		<tr class="triField phys_field">
+			<td>Hit</td>
+			<td id="phys_hit" class="auto" d20="1" d4="0">0</td>
+			<td id="bonus_phys_hit" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField phys_field">
+			<td>Damage</td>
+			<td id="phys_damage" class="auto" d4="0" d6="0" d8="0" d10="0" d12="0">0</td>
+			<td id="bonus_phys_damage" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField phys_field">
+			<td>Range</td>
+			<td id="phys_range" class="auto">0</td>
+			<td id="bonus_phys_range" class="storage clicker">+0</td>
+		</tr>
+		<tr class="quadField phys_field">
+			<td>Targets cleaved</td>
+			<td id="cleave_targets" class="auto">0</td>
+			<td>Cleave damage</td>
+			<td id="cleave_damage" class="auto">0</td>
+		</tr>
+		<tr class="quadField phys_field">
+			<td>Multistrikes</td>
+			<td id="multistrikes" class="auto">0</td>
+			<td>Lifesteal</td>
+			<td id="lifesteal" class="auto">0</td>
+		</tr>
+
+		<tr class="dualField spell_field">
+			<td>Spell type</td>
+			<td id="spell_type" class="storage drop">
+				<span class="selected">Select one</span>
+				<div class="drop_options">
+					<span bg="int" option="1" class="activator" activates="touch_field">Touch spell</span>
+					<span bg="int" option="2" class="activator" activates="ranged_field">Ranged spell</span>
+					<span bg="int" option="3" class="activator" activates="area_field">Area spell</span>
+				</div>
+			</td>
+		</tr>
+		<tr class="quadField spell_field">
+			<td>Marks</td>
+			<td id="spell_marks" class="auto">0</td>
+			<td>Spell range</td>
+			<td id="spell_range" class="auto">0</td>
+		</tr>
+		
+		<tr class="triField ranged_field">
+			<td>Ranged hit</td>
+			<td id="spell_hit" class="auto" d20="1" d4="0">0</td>
+			<td id="bonus_spell_hit" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField touch_field area_field">
+			<td>Force</td>
+			<td id="spell_force" class="auto">0</td>
+			<td id="bonus_spell_force" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField touch_field">
+			<td>Spell damage</td>
+			<td id="touch_damage" class="auto" d4="0" d8="0">0</td>
+			<td id="bonus_touch_damage" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField ranged_field">
+			<td>Spell damage</td>
+			<td id="spell_damage" class="auto" d4="0" d8="0">0</td>
+			<td id="bonus_spell_damage" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField area_field">
+			<td>Spell damage</td>
+			<td id="area_damage" class="auto" d4="0" d8="0">0</td>
+			<td id="bonus_area_damage" class="storage clicker">+0</td>
+		</tr>
+		<tr class="triField area_field">
+			<td>Spell area</td>
+			<td id="spell_area" class="auto">0</td>
+			<td id="bonus_spell_area" class="storage clicker">+0</td>
+		</tr>
+
+		<tr class="dualField">
+			<td>Race 1</td>
+			<td id="race_1" class="storage drop">
+				<span class="selected">Race 1</span>
+				<div class="drop_options">
+					<span class="str" type="1" passive="t_6-1-0">Dwarf</span>
+					<span class="str" type="2" passive="t_6-1-1">Tortle</span>
+					<span class="str" type="3" passive="t_6-1-2">Lizardfolk</span>
+					<span class="str" type="4" passive="t_6-2-0">Goliath</span>
+					<span class="str" type="5" passive="t_6-2-1">Warforged</span>
+					<span class="str" type="6" passive="t_6-2-2">Orc</span>
+
+					<span class="dex" type="7" passive="t_5-1-0">Human</span>
+					<span class="dex" type="8" passive="t_5-1-1">Wood Elf</span>
+					<span class="dex" type="9" passive="t_5-1-2">Centaur</span>
+					<span class="dex" type="10" passive="t_5-2-0">Halfling</span>
+					<span class="dex" type="11" passive="t_5-2-1">Teifling</span>
+					<span class="dex" type="12" passive="t_5-2-2">Fae</span>
+
+					<span class="int" type="13" passive="t_3-1-0">High elf</span>
+					<span class="int" type="14" passive="t_3-1-1">Djinn</span>
+					<span class="int" type="15" passive="t_3-1-2">Darkened</span>
+					<span class="int" type="16" passive="t_3-2-0">Gnome</span>
+					<span class="int" type="17" passive="t_3-2-1">Dragonborn</span>
+					<span class="int" type="18" passive="t_3-2-2">Owlin</span>
+				</div>
+			</td>
+			<td>Race 2</td>
+			<td id="race_2" class="storage drop">
+				<span class="selected">Select one</span>
+				<div class="drop_options">
+					<span class="str" type="1" passive="t_6-1-0">Dwarf</span>
+					<span class="str" type="2" passive="t_6-1-1">Tortle</span>
+					<span class="str" type="3" passive="t_6-1-2">Lizardfolk</span>
+					<span class="str" type="4" passive="t_6-2-0">Goliath</span>
+					<span class="str" type="5" passive="t_6-2-1">Warforged</span>
+					<span class="str" type="6" passive="t_6-2-2">Orc</span>
+
+					<span class="dex" type="7" passive="t_5-1-0">Human</span>
+					<span class="dex" type="8" passive="t_5-1-1">Wood Elf</span>
+					<span class="dex" type="9" passive="t_5-1-2">Centaur</span>
+					<span class="dex" type="10" passive="t_5-2-0">Halfling</span>
+					<span class="dex" type="11" passive="t_5-2-1">Teifling</span>
+					<span class="dex" type="12" passive="t_5-2-2">Fae</span>
+
+					<span class="int" type="13" passive="t_3-1-0">High elf</span>
+					<span class="int" type="14" passive="t_3-1-1">Djinn</span>
+					<span class="int" type="15" passive="t_3-1-2">Darkened</span>
+					<span class="int" type="16" passive="t_3-2-0">Gnome</span>
+					<span class="int" type="17" passive="t_3-2-1">Dragonborn</span>
+					<span class="int" type="18" passive="t_3-2-2">Owlin</span>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 	<div id="character_fields">
 		<div class="character_field">
 			<input id="character_name" class="typing" type="text" placeholder="My character" />
@@ -46,103 +239,6 @@
 		</div>
 	</div>
 	<div id="talents">
-		<!-- <div id="str_talents" class="talent_tree">
-			<div class="talent" t_id="t_3-1-0" pos_x="9" pos_y="5">
-				<i class="talent_icon fa-solid fa-bow-arrow"></i>
-			</div>
-			<div class="talent" t_id="t_3-1-1" pos_x="9" pos_y="14">
-				<i class="talent_icon fa-solid fa-circle-up"></i>
-			</div>
-			<div class="talent" t_id="t_3-1-2" pos_x="6" pos_y="23">
-				<i class="talent_icon fa-solid fa-bullseye-arrow"></i>
-			</div>
-			<div class="talent" t_id="t_3-2-0" pos_x="9" pos_y="23">
-				<i class="talent_icon fa-sharp fa-solid fa-shield"></i>
-			</div>
-			<div class="talent" t_id="t_3-2-1" pos_x="12" pos_y="23">
-				<i class="talent_icon fa-solid fa-circle-up"></i>
-			</div>
-			<div class="talent" t_id="t_3-2-2" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-helmet-battle"></i>
-			</div>
-			<div class="talent" t_id="t_3-3-0" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-sharp fa-solid fa-axe-battle"></i>
-			</div>
-			<div class="talent" t_id="t_3-3-1" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-circle-up"></i>
-			</div>
-			<div class="talent" t_id="t_3-3-2" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-person-running-fast"></i>
-			</div>
-
-			<div class="talent" t_id="t_6-1-0" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-sharp fa-solid fa-helmet-battle"></i>
-			</div>
-			<div class="talent" t_id="t_6-1-1" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-dumbbell"></i>
-			</div>
-			<div class="talent" t_id="t_6-1-2" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-person-running-fast"></i>
-			</div>
-			<div class="talent" t_id="t_6-2-0" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-hand-fist"></i>
-			</div>
-			<div class="talent" t_id="t_6-2-1" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-face-swear"></i>
-			</div>
-			<div class="talent" t_id="t_6-2-2" pos_x="3" pos_y="5">
-
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div id="dex_talents" class="talent_tree">
-			<div class="talent" t_id="t_2-1-0" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-bow-arrow"></i>
-			</div>
-			<div class="talent" t_id="t_2-1-1" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-crosshairs-simple"></i>
-			</div>
-			<div class="talent" t_id="t_2-1-2" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-explosion"></i>
-			</div>
-			<div class="talent" t_id="t_2-2-0" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-sharp fa-solid fa-shield-halved"></i>
-			</div>
-			<div class="talent" t_id="t_2-2-1" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-circle-up"></i>
-			</div>
-			<div class="talent" t_id="t_2-2-2" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-sharp fa-solid fa-shield"></i>
-			</div>
-			<div class="talent" t_id="t_2-3-0" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-swords"></i>
-			</div>
-			<div class="talent" t_id="t_2-3-1" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-crosshairs-simple"></i>
-			</div>
-			<div class="talent" t_id="t_2-3-2" pos_x="3" pos_y="5">
-				<i class="talent_icon fa-solid fa-explosion"></i>
-			</div>
-
-			<div class="talent" t_id="t_5-1-0" pos_x="3" pos_y="5">
-
-			</div>
-			<div class="talent" t_id="t_5-1-1" pos_x="3" pos_y="5">
-
-			</div>
-			<div class="talent" t_id="t_5-1-2" pos_x="3" pos_y="5">
-
-			</div>
-			<div class="talent" t_id="t_5-2-0" pos_x="3" pos_y="5">
-
-			</div>
-			<div class="talent" t_id="t_5-2-1" pos_x="3" pos_y="5">
-
-			</div>
-			<div class="talent" t_id="t_5-2-2" pos_x="3" pos_y="5">
-
-			</div>
-		</div> -->
 		<div id="str_talents" class="talent_tree"></div>
 		<div id="int_talents" class="talent_tree"></div>
 		<div id="dex_talents" class="talent_tree"></div>

@@ -1,7 +1,10 @@
 :root {
 	--red: #ff3721;
+	--lred: #ff7e70;
 	--blue: #6c8cde;
+	--lblue: #8dadff;
 	--green: #3aac72;
+	--lgreen: #8afbc2;
 	--border: 2px solid #FFF;
 	--faded: 0.5;
 }
@@ -267,12 +270,56 @@ input[options] {
 	width: 3px;
 }
 
-td {
+/*td {
 	border: 2px solid transparent;
 }
 
 td.horz {border-bottom: var(--border)}
-td.vert {border-right: var(--border)}
+td.vert {border-right: var(--border)}*/
+
+/* character sheet */
+
+.drop {
+	position: relative;
+	z-index: 0;
+}
+
+.drop:hover {
+	z-index: 1;
+}
+
+.drop_options {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	transform: translateY(100%);
+}
+
+.drop:not(.showing) .drop_options {
+	display: none;
+}
+
+.drop_options span {
+	position: relative;
+	display: block;
+	width: 100%;
+	line-height: 2;
+	padding: 0 0.5em;
+}
+
+[bg="int"] {background-color: var(--lblue);}
+[bg="dex"] {background-color: var(--lgreen);}
+[bg="str"] {background-color: var(--lred);}
+
+.phys_field:not(.showing),
+.spell_field:not(.showing),
+.touch_field:not(.showing),
+.ranged_field:not(.showing),
+.area_field:not(.showing) {
+	display: none;
+}
 
 
 /* TEMP STYLES */
