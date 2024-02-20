@@ -95,3 +95,9 @@ $(function() {
 		$(this).text($(this).attr('default'));
 	});
 });
+
+$(function() {
+	$('.drop[default]').each(function() {
+		$(this).find('.selected').text($(this).attr('default'));
+	});
+});
