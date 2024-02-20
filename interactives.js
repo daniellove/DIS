@@ -84,8 +84,8 @@ $(document).on('click', '.talent', function(e) {
 
 // Character creation
 
-$('#create_character').on('click', function() {
+$(document).on('click', '#create_character', function() {
 	$('#character_info').addClass('showing');
 
-	
+
 });
