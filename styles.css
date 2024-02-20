@@ -137,6 +137,9 @@ input[options] {
 	transition: opacity 0.35s ease-in-out;
 	background-repeat: no-repeat;
 	background-size: cover;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
 }
 
 .talent_tree.active {
@@ -191,7 +194,7 @@ input[options] {
 .talent[level="3"]:after {
 	position: absolute;
 	left: calc(50% - 8px);
-	bottom: -4px;
+	bottom: -7px;
 	display: block;
 	height: 16px;
 	width: 16px;
@@ -199,6 +202,11 @@ input[options] {
 	font-size: 8px;
 	border: var(--border);
 	z-index: 1;
+	box-sizing: border-box;
+	line-height: 14px;
+	background: #FFF;
+	font-weight: bold;
+	border-radius: 50%;
 }
 
 .talent[level="1"]:after {content: "1"}
