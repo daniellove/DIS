@@ -322,6 +322,7 @@ td.vert {border-right: var(--border)}*/
 .drop {
 	position: relative;
 	z-index: 0;
+	background: #FFF;
 }
 
 .drop:hover {
@@ -365,6 +366,7 @@ td.vert {border-right: var(--border)}*/
 	display: none;
 }
 
+#deathSaves:not(.showing) {display: none}
 
 /* TEMP STYLES */
 
