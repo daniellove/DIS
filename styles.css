@@ -173,9 +173,16 @@ input[options] {
 	z-index: 999;
 }
 
+.talent .effects {
+	opacity: var(--faded);
+}
+
 .talent[level="1"],
 .talent[level="2"],
-.talent[level="3"] {
+.talent[level="3"],
+.talent[level="1"] .effects[tier="1"],
+.talent[level="2"] .effects[tier="2"],
+.talent[level="3"] .effects[tier="3"] {
 	opacity: 1;
 }
 
