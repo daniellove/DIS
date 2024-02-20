@@ -41,11 +41,13 @@ $(document).on('click', '.drop_options span', function() {
 var shiftdown = false
 $(document).on('keydown', function(e) {
 	if (e['originalEvent']['key'] == 'Shift') shiftdown = true;
+	
 	return;;
 });
 
 $(document).on('keyup', function(e) {
 	if (e['originalEvent']['key'] == 'Shift') shiftdown = false;
+	
 	return;
 });
 
@@ -84,5 +86,5 @@ $(document).on('click', '.talent', function(e) {
 
 $('#create_character').on('click', function() {
 	$('#character_info').addClass('showing');
-	
+
 });
