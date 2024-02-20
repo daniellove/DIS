@@ -366,6 +366,14 @@ td.vert {border-right: var(--border)}*/
 	display: none;
 }
 
+#character_info {
+	position: relative;
+}
+
+#character_info:hover {
+	z-index: 999;
+}
+
 #deathSaves:not(.showing) {display: none}
 
 /* TEMP STYLES */
