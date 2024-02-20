@@ -193,17 +193,17 @@ input[options] {
 .talent[level="2"]:after,
 .talent[level="3"]:after {
 	position: absolute;
-	left: calc(50% - 8px);
+	left: calc(50% - 10px);
 	bottom: -7px;
 	display: block;
-	height: 16px;
-	width: 16px;
+	height: 20px;
+	width: 20px;
 	text-align: center;
-	font-size: 8px;
+	font-size: 10px;
 	border: var(--border);
 	z-index: 1;
 	box-sizing: border-box;
-	line-height: 14px;
+	line-height: 18px;
 	background: #FFF;
 	font-weight: bold;
 	border-radius: 50%;

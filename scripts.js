@@ -1,9 +1,17 @@
 const TALENT_ROWS = 50;
 const TALENT_COLS = 60;
 
-function updateCharacter(col, data) {
+function updateCharacter(cols, data) {
+	console.log('sending');
+	console.log(cols);
+	console.log(data);
 	return;
-}
+};
+
+function processTalent(t_id) {
+	console.log('applying changes from ' + t_id);
+	return;
+};
 
 $(document).on('click', '.dropdown', function(event) {
 	event.stopPropagation();

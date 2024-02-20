@@ -29,7 +29,10 @@ $(document).on('click', '.drop_options span', function() {
 		$(`.${ele.attr('activates')}`).addClass('showing');
 	};
 
-	updateCharacter(container.attr('id'), ele.attr('option'));
+	updateCharacter(
+		[container.attr('id')],
+		[ele.attr('option')]
+	);
 
 	return;
 });
@@ -56,13 +59,23 @@ $(document).on('click', '.talent', function(e) {
 
 	if (shiftdown) {
 		if (pValue == 0) return;
-		talent.attr('point', pValue - 1)
-		talent.attr('level', tValue - 1)
+		talent.attr('point', pValue - 1);
+		talent.attr('level', tValue - 1);
+		$('#character_level').text(level - 1);
 	} else {
 		if (tValue == 3) return;
-		talent.attr('point', pValue + 1)
-		talent.attr('level', tValue + 1)
+		talent.attr('point', pValue + 1);
+		talent.attr('level', tValue + 1);
+		$('#character_level').text(level + 1);
 	}
 
-	return;	
+	var t_id = talent.attr('t_id')
+		pValue = talent.attr('point')
+	processTalent(t_id);
+	updateCharacter(
+		['character_level', t_id],
+		[$('#character_level').text(), pValue]
+	);
+
+	return;
 });
