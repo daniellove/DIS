@@ -100,11 +100,11 @@ input[options] {
 #talents {
 	position: fixed;
 	top: 0;
-	left: 0;
-	width: 100%;
+	right: 0;
+	width: 66%;
 	height: 100%;
 }
-
+{code: 400, message: 'Unable to parse range: Levels!1:1'}
 #int_talents {
 	background-image: url('mage.jpg');
 	background-position: center;
@@ -121,7 +121,7 @@ input[options] {
 }
 
 .talent_tree {
-	width: calc(66% - 6rem);
+	width: calc(100% - 4rem);
 	height: calc(100% - 4rem);
 	float: right;
 	border-radius: 4px;
@@ -325,6 +325,7 @@ td.vert {border-right: var(--border)}*/
 /* TEMP STYLES */
 
 #create_character,
+#character_info,
 #select_character,
 #character_fields {
 	display: none;
