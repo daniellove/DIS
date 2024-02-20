@@ -104,7 +104,7 @@ input[options] {
 	width: 66%;
 	height: 100%;
 }
-{code: 400, message: 'Unable to parse range: Levels!1:1'}
+
 #int_talents {
 	background-image: url('mage.jpg');
 	background-position: center;
@@ -172,6 +172,31 @@ input[options] {
 	opacity: 1;
 	z-index: 999;
 }
+
+.talent[level="1"],
+.talent[level="2"],
+.talent[level="3"] {
+	opacity: 1;
+}
+
+.talent[level="1"]:after,
+.talent[level="2"]:after,
+.talent[level="3"]:after {
+	position: absolute;
+	left: calc(50% - 8px);
+	bottom: -4px;
+	display: block;
+	height: 16px;
+	width: 16px;
+	text-align: center;
+	font-size: 8px;
+	border: var(--border);
+	z-index: 1;
+}
+
+.talent[level="1"]:after {content: "1"}
+.talent[level="2"]:after {content: "2"}
+.talent[level="3"]:after {content: "3"}
 
 #int_talents .talent {background: var(--blue)}
 #dex_talents .talent {background: var(--green)}
