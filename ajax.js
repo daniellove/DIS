@@ -10,15 +10,12 @@ const HEADERS = {
 }
 const ROW_COUNT = 24;
 
-var CURRENT_CHARACTER = 4;
+var CURRENT_CHARACTER = null;
 var CHAR_HEADERS = [];
 var CHAR_ROWS = [];
 var LEVEL_ROWS = [];
 var TALENT_DATA = [];
 var ROW_SKIPS = 0 
-
-const TEST_DATA = ["333", "test name", "dwarf", "dwarf", "10", "medium", "medium", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
-const TEST_UPDATE = {'character_name': 'New Name'}
 
 $.ajaxSetup({headers: HEADERS});
 getData(CHAR_URL, ROW_SKIPS, processCharacters);
